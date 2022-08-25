@@ -5,9 +5,12 @@ html,body{
 .messages {
     font-size: 1.3rem;
     padding-left: 0;
+    list-style-type: none;
 }
 
 .error {
     color: var(--bs-danger);
-    list-style-type: none;
+}
+.success{
+    color: var(--bs-success);
 }

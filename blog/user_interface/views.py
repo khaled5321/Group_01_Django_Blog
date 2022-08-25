@@ -1,7 +1,9 @@
 from django.contrib import messages
-from .forms import LoginForm
 from django.shortcuts import redirect, render, HttpResponse
 from django.contrib.auth import login, authenticate, logout
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
+from .forms import LoginForm
 from .models import User
 
 def register(request):
@@ -11,6 +13,12 @@ def register(request):
         password=request.POST.get('password')
         confirm_password=request.POST.get('confirm_password')
 
+        try:
+            validate_email(email)
+        except ValidationError:
+            messages.error(request, "Please enter a correct email address!")
+            return redirect('register')
+        
         if User.get_object_or_none(username=user_name):
             messages.error(request, 'Username already exists')
             return redirect('register')
