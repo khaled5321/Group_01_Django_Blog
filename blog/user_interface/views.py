@@ -57,6 +57,10 @@ def login_view(request):
             if User.get_object_or_none(email=email):
                 user = authenticate(request, email=email, password=password)
                 if user is not None:
+                    if user.is_blocked:
+                        messages.error(request, 'Your account is locked, please contact an admin')
+                        return render(request, 'user_interface/login.html', {'form':form})
+
                     login(request, user)
                     # return redirect('home')
                     return HttpResponse('Home')
@@ -73,3 +77,16 @@ def login_view(request):
 def logoutUser(request):
     logout(request)
     return redirect('home')
+
+
+def block_user(request):
+    q=request.GET.get('q')
+    pk=request.GET.get('id')
+    user=User.objects.get(pk=pk)
+    if q== 'block':
+        user.is_blocked=True
+        user.save()
+    elif q=="unblock":
+        user.is_blocked=False
+        user.save()
+    return redirect('/admin/user_interface/user/')
