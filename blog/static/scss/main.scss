@@ -1,0 +1,162 @@
+//                                               ----- VARIABLES ------
+$primary-color: rgb(30, 32, 92);
+$secondary-color: rgb(243, 243, 243);
+$third-color: rgb(251, 251, 251);
+$text-color: #4e5053;
+
+
+html {
+    height: 100vh;
+}
+
+body {
+    background-color: $secondary-color;
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+
+}
+
+.navbar {
+    padding: 1rem;
+    margin-bottom: 3rem;
+    background-color: white;
+
+    a.navbar-brand {
+        color: $primary-color;
+        font-weight: 900;
+    }
+}
+
+//sidebar
+.categories {
+    background-color: $third-color;
+
+    .cont {
+        padding: 1rem;
+
+        h5 {
+            color: $primary-color;
+        }
+
+        ul {
+            background-color: $third-color;
+            list-style-type: none;
+
+            li {
+                color: $primary-color;
+                background-color: $third-color;
+                display: flex;
+                justify-content: space-between;
+
+                a {
+                    text-decoration: none;
+                    color: $primary-color;
+
+                    &:hover {
+                        background-color: $secondary-color;
+                    }
+                }
+
+                .subscribe {
+                    // background-color: #B81414;
+                    border: none;
+                }
+            }
+        }
+
+    }
+}
+
+//post items
+.card {
+
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
+    transition: box-shadow 0.5s;
+
+    &:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .card-title {
+        color: $primary-color;
+    }
+
+    .card-text {
+        color: $text-color;
+
+        .text-muted {
+            letter-spacing: 2px;
+
+        }
+    }
+}
+
+
+// pagination style
+.pagination {
+    margin: 50px 0;
+    padding-bottom: 50px;
+}
+
+.pagination-list {
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    list-style-type: none;
+    gap: 20px;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.pagination-list li a,
+.pagination-list li span {
+    display: block;
+    padding: 10px 15px;
+    border: 1px solid #E0E3E8;
+    text-decoration: none;
+    border-radius: 5px;
+    background: #FFF;
+    color: $primary-color;
+    user-select: none;
+    transition: box-shadow 0.5;
+
+    &:hover {
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    }
+
+}
+
+.pagination-list .previous a,
+.pagination-list .next a {
+    color: #C7CDD5;
+}
+
+.pagination-list .current span {
+    color: #fff;
+    background-color: $primary-color;
+
+}
+
+.pagination-list .previous span,
+.pagination-list .next span {
+    background: #BDC2C8;
+    color: #D6D9DD;
+    border: 1px solid #BDC2C8;
+}
+
+
+
+//added classes
+.messages {
+    font-size: 1.3rem;
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.error {
+    color: var(--bs-danger);
+}
+
+.success {
+    color: var(--bs-success);
+}
