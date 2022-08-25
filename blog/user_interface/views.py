@@ -77,3 +77,16 @@ def login_view(request):
 def logoutUser(request):
     logout(request)
     return redirect('home')
+
+
+def block_user(request):
+    q=request.GET.get('q')
+    pk=request.GET.get('id')
+    user=User.objects.get(pk=pk)
+    if q== 'block':
+        user.is_blocked=True
+        user.save()
+    elif q=="unblock":
+        user.is_blocked=False
+        user.save()
+    return redirect('/admin/user_interface/user/')
