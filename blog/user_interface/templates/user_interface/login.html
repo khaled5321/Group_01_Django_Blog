@@ -1,0 +1,27 @@
+{% extends  'base.html'%}
+
+{% block body %}
+<h1 class="text-center">Login</h1>
+<form class="container w-50 mt-5" method="POST" action="">
+    {% csrf_token %}
+    {% if messages %}
+        <ul class="messages text-center">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div>
+        {% for field in form %}
+        <fieldset class="mb-3">
+            <label class="form-label" for="id_{{ field.name }}">{{ field.label }}</label>
+            <input type="{{ field.field.widget.input_type }}" 
+            class="form-control" 
+            name="{{ field.name }}" 
+            id="id_{{ field.name }}"> 
+        </fieldset>
+        {% endfor %}
+    </div>
+    <input type="submit" value="Login" class="btn btn-primary" />
+</form>
+{% endblock %}

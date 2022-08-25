@@ -1,0 +1,38 @@
+{% extends  'base.html'%}
+{% block title%} Registeration {% endblock %}
+{% block body %}
+<h1 class="text-center">Registeration Form</h1>
+
+<form class="container w-50 mt-5" method="POST" action="">
+    {% csrf_token %}
+    {% if messages %}
+        <ul class="messages text-center">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="">
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input  type="text" class="form-control" id="username" name="username">
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+        </div>
+        
+        <div class="mb-3">
+            <label for="confirm" class="form-label">Password</label>
+            <input  type="password" class="form-control" id="confirm" name="password">
+        </div>
+        <div class="mb-3">
+            <label for="confirm_password" class="form-label">Confirm Password</label>
+            <input  type="password" class="form-control" id="confirm_password" name="confirm_password">
+        </div>
+    </div>
+    <input type="submit" value="Register" class="btn btn-primary" />
+</form>
+
+{% endblock %}

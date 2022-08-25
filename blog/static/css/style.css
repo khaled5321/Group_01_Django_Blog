@@ -1,0 +1,13 @@
+html,body{
+    height: 100vh;
+}
+
+.messages {
+    font-size: 1.3rem;
+    padding-left: 0;
+}
+
+.error {
+    color: var(--bs-danger);
+    list-style-type: none;
+}
