@@ -6,8 +6,8 @@ class User (AbstractUser):
     is_blocked=models.BooleanField(default=False)
     email= models.EmailField(unique=True)
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username']
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = []
 
     @classmethod
     def get_object_or_none(cls, **kwargs):

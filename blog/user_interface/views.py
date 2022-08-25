@@ -90,3 +90,15 @@ def block_user(request):
         user.is_blocked=False
         user.save()
     return redirect('/admin/user_interface/user/')
+
+def promote_user(request):
+    q=request.GET.get('q')
+    pk=request.GET.get('id')
+    user=User.objects.get(pk=pk)
+    if q== 'promote':
+        user.is_superuser=True
+        user.save()
+    elif q=="demote":
+        user.is_superuser=False
+        user.save()
+    return redirect('/admin/user_interface/user/')
