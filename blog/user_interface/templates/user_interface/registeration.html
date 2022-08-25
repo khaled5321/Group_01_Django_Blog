@@ -12,66 +12,32 @@
             {% endfor %}
         </ul>
     {% endif %}
-    <div class="container">
-
-        <form class="well form-horizontal" action=" " method="post"  id="contact_form">
-    <fieldset>
-    
-    
     <div class="form-group">
-      <label class="col-md-4 control-label">Username</label>  
-      <div class="col-md-4 inputGroupContainer">
-      <div class="input-group">
+      <label class="form-label">Username</label>  
       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-      <input name=" user_name" placeholder=" user_name" class="form-control"  type="text">
-        </div>
-      </div>
+      <input name="username" placeholder="username" class="form-control"  type="text">
     </div>
 
     <div class="form-group">
-        <label class="col-md-4 control-label">E-Mail</label>  
-          <div class="col-md-4 inputGroupContainer">
-          <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+        <label class="form-label">Email</label>  
+        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
         <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
-          </div>
-        </div>
-      </div>
-      
+    </div>
         
     <div class="form-group">
-      <label class="col-md-4 control-label" >Password</label> 
-        <div class="col-md-4 inputGroupContainer">
-        <div class="input-group">
+      <label class="form-label" >Password</label> 
       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
       <input name="password" placeholder="Password" class="form-control"  type="password">
-        </div>
-      </div>
     </div>
         
     <div class="form-group">
-      <label class="col-md-4 control-label" >Confirm Password</label> 
-        <div class="col-md-4 inputGroupContainer">
-        <div class="input-group">
+      <label class="form-label" >Confirm Password</label> 
       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
       <input name="confirm_password" placeholder="Confirm Password" class="form-control"  type="password">
-        </div>
-      </div>
     </div>
-       
-    
-    
   
-    <div class="form-group">
-      <label class="col-md-4 control-label"></label>
-      <div class="col-md-4"><br>
-        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" class="btn btn-warning" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
-      </div>
-    </div>
-    
-    </fieldset>
-    </form>
-    </div>
-        </div>
+    <input type="submit" class="btn btn-warning" value="Register">
+
+</form>
 
 {% endblock %}
