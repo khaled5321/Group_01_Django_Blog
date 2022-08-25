@@ -12,27 +12,66 @@
             {% endfor %}
         </ul>
     {% endif %}
-    <div class="">
-        <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input  type="text" class="form-control" id="username" name="username">
-        </div>
+    <div class="container">
 
-        <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+        <form class="well form-horizontal" action=" " method="post"  id="contact_form">
+    <fieldset>
+    
+    
+    <div class="form-group">
+      <label class="col-md-4 control-label">Username</label>  
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      <input name=" user_name" placeholder=" user_name" class="form-control"  type="text">
         </div>
-        
-        <div class="mb-3">
-            <label for="confirm" class="form-label">Password</label>
-            <input  type="password" class="form-control" id="confirm" name="password">
-        </div>
-        <div class="mb-3">
-            <label for="confirm_password" class="form-label">Confirm Password</label>
-            <input  type="password" class="form-control" id="confirm_password" name="confirm_password">
-        </div>
+      </div>
     </div>
-    <input type="submit" value="Register" class="btn btn-primary" />
-</form>
+
+    <div class="form-group">
+        <label class="col-md-4 control-label">E-Mail</label>  
+          <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+        <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+          </div>
+        </div>
+      </div>
+      
+        
+    <div class="form-group">
+      <label class="col-md-4 control-label" >Password</label> 
+        <div class="col-md-4 inputGroupContainer">
+        <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      <input name="password" placeholder="Password" class="form-control"  type="password">
+        </div>
+      </div>
+    </div>
+        
+    <div class="form-group">
+      <label class="col-md-4 control-label" >Confirm Password</label> 
+        <div class="col-md-4 inputGroupContainer">
+        <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      <input name="confirm_password" placeholder="Confirm Password" class="form-control"  type="password">
+        </div>
+      </div>
+    </div>
+       
+    
+    
+  
+    <div class="form-group">
+      <label class="col-md-4 control-label"></label>
+      <div class="col-md-4"><br>
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" class="btn btn-warning" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+      </div>
+    </div>
+    
+    </fieldset>
+    </form>
+    </div>
+        </div>
 
 {% endblock %}
