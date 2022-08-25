@@ -57,6 +57,10 @@ def login_view(request):
             if User.get_object_or_none(email=email):
                 user = authenticate(request, email=email, password=password)
                 if user is not None:
+                    if user.is_blocked:
+                        messages.error(request, 'Your account is locked, please contact an admin')
+                        return render(request, 'user_interface/login.html', {'form':form})
+
                     login(request, user)
                     # return redirect('home')
                     return HttpResponse('Home')
