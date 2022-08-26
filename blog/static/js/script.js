@@ -89,15 +89,11 @@ paginate(pages, '.pagination')
 
 // toggle subscribe
 const subscribe = document.querySelectorAll('.subscribe');
-let issubscribed = true;
-
-for (let i = 0; i < subscribe.length; i++) {
-
-    subscribe[i].addEventListener('click', function () {
-
-        let mode = issubscribed ? 'SUBSCRIBE' : "UNSUBSCRIBE";
-        subscribe[i].innerHTML = mode;
-        issubscribed = !issubscribed;
+subscribe.forEach((btn)=>{
+    btn.addEventListener('click', function () {
+        btn.innerText = btn.innerText==="SUBSCRIBE" ? "UNSUBSCRIBE" : "SUBSCRIBE";
+        console.log('here')
     })
+}) 
+    
 
-}
