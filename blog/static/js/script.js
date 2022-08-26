@@ -92,7 +92,6 @@ const subscribe = document.querySelectorAll('.subscribe');
 subscribe.forEach((btn)=>{
     btn.addEventListener('click', function () {
         btn.innerText = btn.innerText==="SUBSCRIBE" ? "UNSUBSCRIBE" : "SUBSCRIBE";
-        console.log('here')
     })
 }) 
     
