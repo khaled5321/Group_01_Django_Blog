@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+
+{%block title%} Home {% endblock %}
+
+{% block body %}
+    <!-- side bar -->
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <div class="categories">
+                        <div class="cont">
+                            <h5>Categories</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <a href="#" class="btn btn-outline-light">Culture</a>
+                                    <button class="btn btn-secondary btn-sm subscribe ">SUBSCRIBE</button>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#" class="btn btn-outline-light">Creativity</a>
+                                    <button class="btn btn-secondary btn-sm subscribe">SUBSCRIBE</button>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#" class="btn btn-outline-light">Food</a>
+                                    <button class="btn btn-secondary btn-sm subscribe">SUBSCRIBE</button>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#" class="btn btn-secondaryoutline-light">Travel</a>
+                                    <button class="btn btn-secondary btn-sm subscribe">SUBSCRIBE</button>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#" class="btn btn-outline-light">Humor</a>
+                                    <button class="btn btn-secondary btn-sm subscribe">SUBSCRIBE</button>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#" class="btn btn-outline-light">Music</a>
+                                    <button class="btn btn-secondary btn-sm subscribe">SUBSCRIBE</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- body block -->
+                <div class="col">
+                    <div class="row">
+                        <!-- Posts [5] -->
+                        <div class="col-6">
+                            <div class="card mb-3">
+                                <a href="#">
+                                    <img src="http://yallabook.com/blog/uploade/files/201123_254aca7e13.jpg"
+                                        class="card-img-top" alt="...">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">Post title</h5>
+                                    <!-- display part of the post content -->
+                                    <p class="card-text">This is a wider card with supporting text below as a natural
+                                        lead-in to
+                                        additional content. This content is a little bit longer.</p>
+                                    <!-- category || created at -->
+                                    <p class="card-text"><small class="text-muted">Travel || OCT 13, 2000</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card mb-3">
+                                <a href="#">
+                                    <img src="http://yallabook.com/blog/uploade/files/201123_254aca7e13.jpg"
+                                        class="card-img-top" alt="...">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">Post title</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural
+                                        lead-in to
+                                        additional content. This content is a little bit longer.</p>
+                                    <p class="card-text"><small class="text-muted">Travel || OCT 13, 2000</small></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card mb-3">
+                                <a href="#">
+                                    <img src="http://yallabook.com/blog/uploade/files/201123_254aca7e13.jpg"
+                                        class="card-img-top" alt="...">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">Post title</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural
+                                        lead-in to
+                                        additional content. This content is a little bit longer.</p>
+                                    <p class="card-text"><small class="text-muted">Travel || OCT 13, 2000</small></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card mb-3">
+                                <a href="#">
+                                    <img src="http://yallabook.com/blog/uploade/files/201123_254aca7e13.jpg"
+                                        class="card-img-top" alt="...">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">Post title</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural
+                                        lead-in to
+                                        additional content. This content is a little bit longer.</p>
+                                    <p class="card-text"><small class="text-muted">Travel || OCT 13, 2000</small></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card mb-3">
+                                <a href="#">
+                                    <img src="http://yallabook.com/blog/uploade/files/201123_254aca7e13.jpg"
+                                        class="card-img-top" alt="...">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">Post title</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural
+                                        lead-in to
+                                        additional content. This content is a little bit longer.</p>
+                                    <p class="card-text"><small class="text-muted">Travel || OCT 13, 2000</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--     PAGINATION     -->
+            <div class="pagination"></div>
+        </div>
+    </div>
+{% endblock %}
+

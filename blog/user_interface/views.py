@@ -6,7 +6,15 @@ from django.core.exceptions import ValidationError
 from .forms import LoginForm
 from .models import User
 
+
+def home(request):
+    return render(request, 'user_interface/home.html')
+
+
 def register(request):
+    if request.user.is_authenticated:
+        return redirect('home')
+        
     if request.POST:
         user_name=request.POST.get('username')
         email=request.POST.get('email')
@@ -45,29 +53,27 @@ def login_view(request):
     form=LoginForm()
 
     if request.user.is_authenticated:
-        # return redirect('home')
-        return HttpResponse('Home')
+        return redirect('home')
 
     if request.POST:
         form=LoginForm(request.POST)
         if form.is_valid():
-            email=form.cleaned_data.get('email')
+            username=form.cleaned_data.get('username')
             password=form.cleaned_data.get('password')
             
-            if User.get_object_or_none(email=email):
-                user = authenticate(request, email=email, password=password)
+            if User.get_object_or_none(username=username):
+                user = authenticate(request, username=username, password=password)
                 if user is not None:
                     if user.is_blocked:
                         messages.error(request, 'Your account is locked, please contact an admin')
                         return render(request, 'user_interface/login.html', {'form':form})
 
                     login(request, user)
-                    # return redirect('home')
-                    return HttpResponse('Home')
+                    return redirect('home')
                 else:
-                    messages.error(request, 'Email OR password is not correct')      
+                    messages.error(request, 'Username OR password is not correct')      
             else:
-                messages.error(request, 'This Email is not registered!')
+                messages.error(request, 'There is no account with this username')
         else:
             messages.error(request, 'Please Enter valid inputs!')
 
