@@ -1,0 +1,132 @@
+html {
+  height: 100vh;
+}
+
+body {
+  background-color: rgb(243, 243, 243);
+  font-family: "Roboto", sans-serif;
+  height: 100vh;
+}
+
+.navbar {
+  padding: 1rem;
+  margin-bottom: 3rem;
+  background-color: white;
+}
+.navbar a.navbar-brand {
+  color: rgb(30, 32, 92);
+  font-weight: 900;
+}
+
+.categories {
+  background-color: rgb(251, 251, 251);
+}
+.categories .cont {
+  padding: 1rem;
+}
+.categories .cont h5 {
+  color: rgb(30, 32, 92);
+}
+.categories .cont ul {
+  background-color: rgb(251, 251, 251);
+  list-style-type: none;
+}
+.categories .cont ul li {
+  color: rgb(30, 32, 92);
+  background-color: rgb(251, 251, 251);
+  display: flex;
+  justify-content: space-between;
+}
+.categories .cont ul li a {
+  text-decoration: none;
+  color: rgb(30, 32, 92);
+}
+.categories .cont ul li a:hover {
+  background-color: rgb(243, 243, 243);
+}
+.categories .cont ul li .subscribe {
+  border: none;
+}
+
+.card {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
+  transition: box-shadow 0.5s;
+}
+.card:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.card .card-title {
+  color: rgb(30, 32, 92);
+}
+.card .card-text {
+  color: #4e5053;
+}
+.card .card-text .text-muted {
+  letter-spacing: 2px;
+}
+
+.pagination {
+  margin: 50px 0;
+  padding-bottom: 50px;
+}
+
+.pagination-list {
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  list-style-type: none;
+  gap: 20px;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.pagination-list li a,
+.pagination-list li span {
+  display: block;
+  padding: 10px 15px;
+  border: 1px solid #E0E3E8;
+  text-decoration: none;
+  border-radius: 5px;
+  background: #FFF;
+  color: rgb(30, 32, 92);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  transition: box-shadow 0.5;
+}
+.pagination-list li a:hover,
+.pagination-list li span:hover {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.pagination-list .previous a,
+.pagination-list .next a {
+  color: #C7CDD5;
+}
+
+.pagination-list .current span {
+  color: #fff;
+  background-color: rgb(30, 32, 92);
+}
+
+.pagination-list .previous span,
+.pagination-list .next span {
+  background: #BDC2C8;
+  color: #D6D9DD;
+  border: 1px solid #BDC2C8;
+}
+
+.messages {
+  font-size: 1.3rem;
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.error {
+  color: var(--bs-danger);
+}
+
+.success {
+  color: var(--bs-success);
+}/*# sourceMappingURL=main.css.map */
