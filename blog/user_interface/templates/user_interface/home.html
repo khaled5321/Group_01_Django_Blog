@@ -11,31 +11,32 @@
                     <div class="categories">
                         <div class="cont">
                             <h5>Categories</h5>
+                            {% if messages %}
+                            {% for message in messages %}
+                            <p {% if message.tags %} class="{{ message.tags }} text-center" {% endif %}>{{ message }}</p>
+                            {% endfor %}
+                            {% endif %}
                             <ul class="list-group list-group-flush">
+                                {% for cat in categories %}
                                 <li class="list-group-item d-flex flex-column flex-lg-row">
-                                    <a href="#" class="btn btn-outline-light">Culture</a>
-                                    <button class="btn btn-secondary btn-sm subscribe ">SUBSCRIBE</button>
+                                    <a href="#" class="btn btn-outline-light">{{cat.name}}</a>
+                                    {% if user.is_authenticated %}
+                                        <a href="{% url 'subscribe' cat.id %}" class="text-center">
+                                            <button class="btn btn-secondary btn-sm subscribe">
+                                                {% if cat in user.subscribed_categories.all %} 
+                                                UNSUBSCRIBE
+                                                {% else %}
+                                                SUBSCRIBE
+                                                {% endif %}
+                                            </button>
+                                        </a>
+                                    {% else %}
+                                        <a href="{% url 'subscribe' cat.id %}" class="text-center">
+                                            <button class="btn btn-secondary btn-sm subscribe">SUBSCRIBE</button>
+                                        </a>
+                                    {% endif %}
                                 </li>
-                                <li class="list-group-item d-flex flex-column flex-lg-row">
-                                    <a href="#" class="btn btn-outline-light">Creativity</a>
-                                    <button class="btn btn-secondary btn-sm subscribe">SUBSCRIBE</button>
-                                </li>
-                                <li class="list-group-item d-flex flex-column flex-lg-row">
-                                    <a href="#" class="btn btn-outline-light">Food</a>
-                                    <button class="btn btn-secondary btn-sm subscribe">SUBSCRIBE</button>
-                                </li>
-                                <li class="list-group-item d-flex flex-column flex-lg-row">
-                                    <a href="#" class="btn btn-secondaryoutline-light">Travel</a>
-                                    <button class="btn btn-secondary btn-sm subscribe">SUBSCRIBE</button>
-                                </li>
-                                <li class="list-group-item d-flex flex-column flex-lg-row">
-                                    <a href="#" class="btn btn-outline-light">Humor</a>
-                                    <button class="btn btn-secondary btn-sm subscribe">SUBSCRIBE</button>
-                                </li>
-                                <li class="list-group-item d-flex flex-column flex-lg-row">
-                                    <a href="#" class="btn btn-outline-light">Music</a>
-                                    <button class="btn btn-secondary btn-sm subscribe">SUBSCRIBE</button>
-                                </li>
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>
@@ -131,5 +132,8 @@
             <div class="pagination"></div>
         </div>
     </div>
+<style>
+
+</style>
 {% endblock %}
 

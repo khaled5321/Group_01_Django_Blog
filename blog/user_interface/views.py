@@ -1,14 +1,16 @@
 from django.contrib import messages
-from django.shortcuts import redirect, render, HttpResponse
+from django.shortcuts import redirect, render
 from django.contrib.auth import login, authenticate, logout
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
+from categories.models import Category
 from .forms import LoginForm
 from .models import User
 
 
 def home(request):
-    return render(request, 'user_interface/home.html')
+    categories=Category.objects.all()
+    return render(request, 'user_interface/home.html', {'categories':categories})
 
 
 def register(request):
@@ -80,6 +82,7 @@ def login_view(request):
 
     return render(request, 'user_interface/login.html', {'form':form})
 
+
 def logoutUser(request):
     logout(request)
     return redirect('home')
@@ -96,6 +99,7 @@ def block_user(request):
         user.is_blocked=False
         user.save()
     return redirect('/admin/user_interface/user/')
+
 
 def promote_user(request):
     q=request.GET.get('q')
