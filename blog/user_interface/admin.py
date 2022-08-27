@@ -7,7 +7,8 @@ from django.urls import reverse
 class UserAdmin(admin.ModelAdmin):
     list_display = ['users', 'block_user', 'promote_to_admin']
     search_fields=['username']
-    fields = ['username', 'email', 'password']
+    fields = ['username', 'email', 'password', 'subscribed_categories']
+    filter_horizontal = ('subscribed_categories',)
 
     def users(self, obj):
         if obj.is_superuser:
