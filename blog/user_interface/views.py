@@ -10,6 +10,7 @@ from .models import User
 
 def home(request):
     categories=Category.objects.all()
+    q=request.GET.get('q')
     return render(request, 'user_interface/home.html', {'categories':categories})
 
 
