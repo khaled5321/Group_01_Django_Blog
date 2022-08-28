@@ -28,6 +28,82 @@ body {
 }
 
 //sidebar
+
+#searchbar {
+    width: 100%;
+
+    .search-box{
+        width: fit-content;
+        height: fit-content;
+        position: relative;
+
+        .input-search{
+            height: 50px;
+            width: 50px;
+            border-style: none;
+            padding: 10px;
+            font-size: 18px;
+            letter-spacing: 2px;
+            outline: none;
+            border-radius: 25px;
+            transition: all .5s ease-in-out;
+            background-color: $primary-color;
+            padding-right: 40px;
+            color: #262323;
+
+            &::placeholder{
+                color:$text-color;
+                font-size: 18px;
+                letter-spacing: 2px;
+                font-weight: 100;
+            }
+
+            &:focus{
+                width: 85%;
+                border-radius: 0;
+                background-color: transparent;
+                border-bottom:1px solid #51585e;
+                transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+            }
+
+        }
+
+
+        .btn-search{
+                width: 50px;
+                height: 50px;
+                border-style: none;
+                font-size: 20px;
+                font-weight: bold;
+                outline: none;
+                cursor: pointer;
+                border-radius: 50%;
+                position: absolute;
+                right: 0;
+                color:#fff ;
+                background-color:$primary-color;
+                pointer-events: painted;
+
+                &:hover{
+                    box-shadow: 0 1px 2px 0 $primary-color ;
+                    transition: box-shadow 0.5s;
+                }
+        }
+
+        .btn-search:focus ~ .input-search{
+                width: 85%;
+                border-radius: 0;
+                background-color: transparent;
+                border-bottom:1px solid #51585e;
+                transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+        }
+
+    }
+
+}
+
+
+
 .categories {
     background-color: $third-color;
 
