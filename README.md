@@ -20,7 +20,7 @@ git clone https://github.com/khaled5321/Group_01_Django_Blog.git
 cd blog
 ```
 </li>
-<li>Install requirments
+<li>Install requirements
 
 ```shell
 pip install -r requirements.txt
