@@ -18,6 +18,68 @@ body {
   font-weight: 900;
 }
 
+#searchbar {
+  width: 100%;
+}
+#searchbar .search-box {
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+}
+#searchbar .search-box .input-search {
+  height: 50px;
+  width: 50px;
+  border-style: none;
+  padding: 10px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  outline: none;
+  border-radius: 25px;
+  transition: all 0.5s ease-in-out;
+  background-color: rgb(30, 32, 92);
+  padding-right: 40px;
+  color: #262323;
+}
+#searchbar .search-box .input-search::placeholder {
+  color: #4e5053;
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: 100;
+}
+#searchbar .search-box .input-search:focus {
+  width: 85%;
+  border-radius: 0;
+  background-color: transparent;
+  border-bottom: 1px solid #51585e;
+  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+}
+#searchbar .search-box .btn-search {
+  width: 50px;
+  height: 50px;
+  border-style: none;
+  font-size: 20px;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  right: 0;
+  color: #fff;
+  background-color: rgb(30, 32, 92);
+  pointer-events: painted;
+}
+#searchbar .search-box .btn-search:hover {
+  box-shadow: 0 1px 2px 0 rgb(30, 32, 92);
+  transition: box-shadow 0.5s;
+}
+#searchbar .search-box .btn-search:focus ~ .input-search {
+  width: 85%;
+  border-radius: 0;
+  background-color: transparent;
+  border-bottom: 1px solid #51585e;
+  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+}
+
 .categories {
   background-color: rgb(251, 251, 251);
 }
@@ -89,11 +151,8 @@ body {
   border-radius: 5px;
   background: #FFF;
   color: rgb(30, 32, 92);
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  transition: box-shadow 0.5;
+  user-select: none;
+  transition: box-shadow 0.5s;
 }
 .pagination-list li a:hover,
 .pagination-list li span:hover {
@@ -129,4 +188,6 @@ body {
 
 .success {
   color: var(--bs-success);
-}/*# sourceMappingURL=main.css.map */
+}
+
+/*# sourceMappingURL=main.css.map */
