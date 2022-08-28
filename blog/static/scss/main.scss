@@ -1,4 +1,4 @@
-//                                               ----- VARIABLES ------
+//                                               -----  VARIABLES ------
 $primary-color: rgb(30, 32, 92);
 $secondary-color: rgb(243, 243, 243);
 $third-color: rgb(251, 251, 251);
@@ -118,7 +118,7 @@ body {
     background: #FFF;
     color: $primary-color;
     user-select: none;
-    transition: box-shadow 0.5;
+    transition: box-shadow 0.5s;
 
     &:hover {
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);

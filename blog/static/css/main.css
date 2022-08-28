@@ -89,11 +89,8 @@ body {
   border-radius: 5px;
   background: #FFF;
   color: rgb(30, 32, 92);
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  transition: box-shadow 0.5;
+  user-select: none;
+  transition: box-shadow 0.5s;
 }
 .pagination-list li a:hover,
 .pagination-list li span:hover {
@@ -129,4 +126,6 @@ body {
 
 .success {
   color: var(--bs-success);
-}/*# sourceMappingURL=main.css.map */
+}
+
+/*# sourceMappingURL=main.css.map */
