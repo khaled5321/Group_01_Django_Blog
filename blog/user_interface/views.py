@@ -116,4 +116,5 @@ def promote_user(request):
 
 
 def post_details(request):
-    return render(request, 'user_interface/post.html')
+    categories=Category.objects.all()
+    return render(request, 'user_interface/post.html', {'categories':categories})
