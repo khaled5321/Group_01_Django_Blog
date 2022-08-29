@@ -220,6 +220,86 @@ body {
     border: 1px solid #BDC2C8;
 }
 
+//                                             --------   Post Page  --------
+
+.post_page {
+
+    .cat {
+        margin-bottom: 2rem;
+    }
+
+    // Comment Section
+    .num-comments {
+        margin: 2rem 0;
+        color: #272727;
+    }
+
+    .comment-list {
+        padding: 0;
+        margin: 0;
+
+        .children {
+		    padding: 50px 0 0 40px;
+		    margin: 0;
+		    float: left;
+		    width: 100%;
+	    }
+
+        li {
+            padding: 0;
+            margin: 0 0 30px 0;
+            float: left;
+            width: 100%;
+            clear: both;
+            list-style: none;
+
+
+            .comment-body {
+			    float: right;
+			    width: calc(100% - 10px);
+
+			    h3 {
+				    font-size: 20px;
+				    color: $primary-color;
+			    }
+
+			    .meta {
+				    text-transform: uppercase;
+				    font-size: 13px;
+				    letter-spacing: .1em;
+				    color: #bdbdbd;
+			    }
+
+                .comment-text {
+                    color: #4e5053;
+                }
+
+			    .reply {
+				    padding: 5px 10px;
+				    color: #fff;
+				    text-transform: uppercase;
+				    font-size: 14px;
+
+				    &:hover {
+					    color: #fff;
+				    }
+			    }
+		    }
+        }
+    }
+    .message {
+        padding-bottom: 50px;
+        width: 80%;
+
+        .send {
+            text-decoration: none;
+
+            &:hover {
+                color: $primary-color;
+            }
+        }
+    }
+}
 
 
 //added classes
