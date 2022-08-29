@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{%block title%} Post Page {% endblock %}
+{% block body %}
+
+    <!-- side bar -->
+    <div>
+        <div class="container post_page">
+            <div class="row">
+                <div class="col-lg-4 col-12 cat">
+                    <div id="searchbar">
+                        <div class="search-box">
+                            <!-- Search form -->
+                            <form action="{% url 'home' %}" method="GET">
+                                <button class="btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                <input type="text" name="q" class="input-search" placeholder="Search...">
+                                <input type="submit" hidden />
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="categories">
+                        <div class="cont">
+                            <h5>Categories</h5>
+                            {% if messages %}
+                            {% for message in messages %}
+                            <p {% if message.tags %} class="{{ message.tags }} text-center" {% endif %}>{{ message }}</p>
+                            {% endfor %}
+                            {% endif %}
+                            <ul class="list-group list-group-flush">
+                                {% for cat in categories %}
+                                <li class="list-group-item d-flex flex-column flex-lg-row">
+                                    <a href="#" class="btn btn-outline-light">{{cat.name}}</a>
+                                    {% if user.is_authenticated %}
+                                        <a href="{% url 'subscribe' cat.id %}" class="text-center">
+                                            <button class="btn btn-secondary btn-sm subscribe">
+                                                {% if cat in user.subscribed_categories.all %}
+                                                UNSUBSCRIBE
+                                                {% else %}
+                                                SUBSCRIBE
+                                                {% endif %}
+                                            </button>
+                                        </a>
+                                    {% else %}
+                                        <a href="{% url 'subscribe' cat.id %}" class="text-center">
+                                            <button class="btn btn-secondary btn-sm subscribe">SUBSCRIBE</button>
+                                        </a>
+                                    {% endif %}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col post">
+                    <div class="row">
+                        <!-- Posts [5] -->
+                        <div class="col">
+                            <div class="card mb-3">
+                                <a href="#">
+                                    <img src="http://yallabook.com/blog/uploade/files/201123_254aca7e13.jpg"
+                                        class="card-img-top" alt="...">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">Post title</h5>
+                                    <!-- display part of the post content -->
+                                    <p class="card-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. sequi voluptate. Aliquam at, consectetur corporis delectus deserunt earum harum ipsum laborum laudantium minus, perspiciatis porro ullam vel. Ex ipsam molestias placeat tenetur? Alias amet animi assumenda autem consequatur consequuntur earum eligendi exercitationem id incidunt minus nihil nisi nobis, omnis quae qui quo repellendus suscipit tenetur voluptatibus? Commodi deleniti eos id laudantium nisi. A accusamus accusantium alias aliquid corporis delectus dolor eos ex explicabo, facilis illo, inventore laboriosam nemo neque numquam officia praesentium quas repudiandae sapiente soluta ullam veniam vero. Ab aliquam debitis dicta distinctio dolor facere fuga harum id impedit in incidunt ipsa, ipsam ipsum iste iusto labore libero magni minus, optio, quasi quibusdam quidem ratione repellat repudiandae totam veritatis voluptas. Accusantium corporis earum est praesentium sapiente? Adipisci animi atque blanditiis consectetur cumque debitis delectus deleniti distinctio dolorum ea enim explicabo facilis, harum inventore itaque iure labore laudantium maxime modi natus nisi nobis quae quisquam rerum temporibus totam velit voluptatem. Animi aperiam aspernatur atque blanditiis consectetur cupiditate dicta dignissimos dolores doloribus dolorum eaque exercitationem, illo, incidunt, ipsa ipsum labore laudantium minus molestiae necessitatibus nesciunt odit quia quos rem repellendus sapiente tempora vitae voluptatibus! Accusamus aliquid, aspernatur atque beatae dolorem illum impedit iure necessitatibus quia rem! Dignissimos est expedita odit porro recusandae. Aut culpa dolores est, incidunt minima nemo nobis quas sequi similique tenetur. Amet delectus dolores earum error et expedita, incidunt inventore laudantium maiores nam nihil odio quia, quod quos tempore totam unde. Adipisci aliquam commodi magnam nisi repellat! Alias aperiam atque, aut corporis cum deleniti dolore dolores dolorum eaque eos exercitationem explicabo id iure laboriosam magni maxime modi natus nobis nulla officia quae quas quasi quisquam rem saepe sed ullam veniam veritatis voluptas voluptatibus? Ad assumenda consectetur corporis distinctio doloremque error eum ex expedita in minima, nobis officiis porro quas rem rerum, soluta suscipit? Fugiat inventore iure maiores maxime, nostrum officia repellat saepe. Provident rerum, vel. Aspernatur assumenda beatae, commodi consectetur consequatur consequuntur, cumque delectus deserunt dolor doloremque esse harum illum iste labore laudantium magni nam nemo nesciunt numquam obcaecati odio officiis perspiciatis quia quis saepe sapiente ullam! Ad aperiam assumenda blanditiis doloremque earum esse, excepturi explicabo fugit incidunt iusto molestiae molestias mollitia nam officia optio perspiciatis possimus quae, quas quo, ratione repellendus saepe temporibus. Est! This is a wider card with supporting text below as a natural
+                                        lead-in to
+                                        additional content. This content is a little bit longer.</p>
+                                    <!-- category || created at   and tags -->
+                                    <p class="card-text d-flex">
+                                        <small class="text-muted me-auto p-2">Travel || OCT 13, 2000</small>
+                                        <small class="text-muted p-2">#Paris #Eiffel Tower</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  Comments Section          -->
+            <h3 class="num-comments">6 Comments</h3>
+            <ul class="comment-list col-lg-8 col-sm-11 ">
+                <li class="comment">
+                  <div class="comment-body">
+                    <h3>Jacob Smith</h3>
+                    <div class="meta">January 9, 2018 at 2:21pm</div>
+                    <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus,
+                      ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum
+                      impedit necessitatibus, nihil?</p>
+                    <p><a href="#" class="reply btn btn-secondary btn-sm">Reply</a></p>
+                  </div>
+                </li>
+
+                <li class="comment">
+                  <div class="comment-body">
+                    <h3>Chris Meyer</h3>
+                    <div class="meta">January 9, 2018 at 2:21pm</div>
+                    <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus,
+                      ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum
+                      impedit necessitatibus, nihil?</p>
+                    <p><a href="#" class="reply btn btn-secondary btn-sm">Reply</a></p>
+                  </div>
+
+                  <ul class="children">
+                    <li class="comment">
+                      <div class="comment-body">
+                        <h3>Chintan Patel</h3>
+                        <div class="meta">January 9, 2018 at 2:21pm</div>
+                        <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum
+                          necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure!
+                          Quam voluptas earum impedit necessitatibus, nihil?</p>
+                        <p><a href="#" class="reply btn btn-secondary btn-sm">Reply</a></p>
+                      </div>
+
+
+                      <ul class="children">
+                        <li class="comment">
+                          <div class="comment-body">
+                            <h3>Jean Doe</h3>
+                            <div class="meta">January 9, 2018 at 2:21pm</div>
+                            <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum
+                              necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste
+                              iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                            <p><a href="#" class="reply btn btn-secondary btn-sm">Reply</a></p>
+                          </div>
+
+                          <ul class="children">
+                            <li class="comment">
+                              <div class="comment-body">
+                                <h3>Ben Afflick</h3>
+                                <div class="meta">January 9, 2018 at 2:21pm</div>
+                                <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum
+                                  necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente
+                                  iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                                <p><a href="#" class="reply btn btn-secondary btn-sm">Reply</a></p>
+                              </div>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="comment">
+                  <div class="comment-body">
+                    <h3>Jean Doe</h3>
+                    <div class="meta">January 9, 2018 at 2:21pm</div>
+                    <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus,
+                      ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum
+                      impedit necessitatibus, nihil?</p>
+                    <p><a href="#" class="reply btn btn-secondary btn-sm">Reply</a></p>
+                  </div>
+                </li>
+            </ul>
+
+            <div class="input-group message">
+                <textarea class="form-control" aria-label="With textarea" placeholder="Leave A Comment..."></textarea>
+                <a href="#" class="input-group-text send">Send</a>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+
