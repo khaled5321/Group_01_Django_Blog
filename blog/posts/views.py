@@ -123,7 +123,7 @@ class Tagsposts(ListView):
         context = super(Tagsposts,self).get_context_data(*args,**kwargs)
         # passing cat_menu
         context['categories'] = Category.objects.all()
-        context['tilte'] = self.kwargs.get('tag_slug')
+        context['title'] = self.kwargs.get('tag_slug')
         return context
 
     # this method is used to return the associated posts related to same tags
