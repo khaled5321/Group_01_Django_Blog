@@ -95,7 +95,7 @@ body {
                 border-radius: 0;
                 background-color: transparent;
                 border-bottom:1px solid #51585e;
-                transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+                transition: all 0.5s cubic-bezier(0, 0.110, 0.35, 2);
         }
 
     }
@@ -123,14 +123,34 @@ body {
                 background-color: $third-color;
                 display: flex;
                 justify-content: space-between;
+                @media (max-width: 600px) {
+                        &{
+                            width: 100%;
+                            margin: 0;
+                            padding: 0;
+                        }
+                    }
 
                 a {
                     text-decoration: none;
                     color: $primary-color;
 
+
                     &:hover {
                         background-color: $secondary-color;
                     }
+
+                    button{
+                        @media (max-width: 600px) {
+                            &{
+                                width: 100%;
+                                font-size: 0.8rem;
+                                text-align: center;
+                                padding: 2px 4px;
+                            }
+                        }
+                    }
+
                 }
 
                 .subscribe {
@@ -143,15 +163,28 @@ body {
     }
 }
 
-//post items
+
 .card {
 
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
     transition: box-shadow 0.5s;
+    width: 80%;
+    margin: 0 auto;
+
+    @media (max-width: 900px){
+
+        &{
+            width: 100%;
+        }
+        
+    }
+
 
     &:hover {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
+
+
 
     .card-title {
         color: $primary-color;
@@ -164,61 +197,11 @@ body {
             letter-spacing: 2px;
 
         }
-    }
-}
 
-
-// pagination style
-.pagination {
-    margin: 50px 0;
-    padding-bottom: 50px;
-}
-
-.pagination-list {
-    margin: 0 auto;
-    padding: 0;
-    display: flex;
-    list-style-type: none;
-    gap: 20px;
-    justify-content: center;
-    font-weight: bold;
-}
-
-.pagination-list li a,
-.pagination-list li span {
-    display: block;
-    padding: 10px 15px;
-    border: 1px solid #E0E3E8;
-    text-decoration: none;
-    border-radius: 5px;
-    background: #FFF;
-    color: $primary-color;
-    user-select: none;
-    transition: box-shadow 0.5s;
-
-    &:hover {
-        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
     }
 
 }
 
-.pagination-list .previous a,
-.pagination-list .next a {
-    color: #C7CDD5;
-}
-
-.pagination-list .current span {
-    color: #fff;
-    background-color: $primary-color;
-
-}
-
-.pagination-list .previous span,
-.pagination-list .next span {
-    background: #BDC2C8;
-    color: #D6D9DD;
-    border: 1px solid #BDC2C8;
-}
 
 //                                             --------   Post Page  --------
 
@@ -228,79 +211,293 @@ body {
         margin-bottom: 2rem;
     }
 
-    // Comment Section
-    .num-comments {
-        margin: 2rem 0;
-        color: #272727;
-    }
+    .card {
+        box-shadow: none;
+        border: none;
 
-    .comment-list {
-        padding: 0;
-        margin: 0;
+        .likeCount {
 
-        .children {
-		    padding: 50px 0 0 40px;
-		    margin: 0;
-		    float: left;
-		    width: 100%;
-	    }
+            margin-top: 40px;
 
-        li {
-            padding: 0;
-            margin: 0 0 30px 0;
-            float: left;
-            width: 100%;
-            clear: both;
-            list-style: none;
+            .like {
+                margin-right: 40px;
+                width: 100%;
+                max-width: 150px;
 
+                button {
+                    margin-right: 1rem;
+                    background: none;
+                    border: none;
 
-            .comment-body {
-			    float: right;
-			    width: calc(100% - 10px);
+                    i{
 
-			    h3 {
-				    font-size: 20px;
-				    color: $primary-color;
-			    }
+                        &:hover{
+                            color: #c01a1a;
+                        text-shadow: 1px 1px 1px #ccc;
+                        font-size: 2em;
+                        }
 
-			    .meta {
-				    text-transform: uppercase;
-				    font-size: 13px;
-				    letter-spacing: .1em;
-				    color: #bdbdbd;
-			    }
-
-                .comment-text {
-                    color: #4e5053;
+                    }
                 }
+            }
+            .dislike{
+                margin-right: 40px;
+                width: 100%;
+                max-width: 150px;
 
-			    .reply {
-				    padding: 5px 10px;
-				    color: #fff;
-				    text-transform: uppercase;
-				    font-size: 14px;
+                button {
+                    margin-right: 1rem;
+                    background: none;
+                    border: none;
 
-				    &:hover {
-					    color: #fff;
-				    }
-			    }
-		    }
-        }
-    }
-    .message {
-        padding-bottom: 50px;
-        width: 80%;
+                    i{
 
-        .send {
-            text-decoration: none;
+                        &:hover{
+                            color: #c01a1a;
+                        text-shadow: 1px 1px 1px #ccc;
+                        font-size: 2em;
+                        }
 
-            &:hover {
-                color: $primary-color;
+                    }
+                }
             }
         }
     }
-}
 
+    // Comment Section
+
+    h3 {
+        margin: 0 auto;
+        padding: 80px 0 40px 0;
+        text-align: center;
+        background-color: white;
+        max-width: 700px;
+
+    }
+
+
+
+    .comment-thread {
+        width: 700px;
+        max-width: 100%;
+        margin: auto;
+        padding: 0 30px;
+        background-color: #fff;
+        border: 1px solid transparent; /* Removes margin collapse */
+
+        button {
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+        font-size: 14px;
+        padding: 4px 8px;
+        color: rgba(0, 0, 0, 0.85);
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+        }
+
+        button:hover,
+        button:focus,
+        button:active {
+            cursor: pointer;
+            background-color: #ecf0f1;
+        }
+    }
+
+    .m-0 {
+        margin: 0;
+    }
+
+    .sr-only {
+        position: absolute;
+        left: -10000px;
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+    }
+
+    /* Comment */
+
+    .comment {
+        position: relative;
+        margin: 20px auto;
+    }
+
+    .comment-heading {
+        display: flex;
+        align-items: center;
+        height: 50px;
+        font-size: 14px;
+    }
+
+    .comment-voting {
+        width: 20px;
+        height: 32px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+    }
+
+    .comment-voting button {
+        display: block;
+        width: 100%;
+        height: 50%;
+        padding: 0;
+        border: 0;
+        font-size: 10px;
+    }
+
+    .comment-info {
+        color: rgba(0, 0, 0, 0.5);
+        margin-left: 10px;
+    }
+
+    .comment-author {
+        color: rgba(0, 0, 0, 0.85);
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .comment-author:hover {
+        text-decoration: underline;
+    }
+
+    .replies {
+        margin-left: 20px;
+    }
+
+    /* Adjustments for the comment border links */
+
+    .comment-border-link {
+        display: block;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 12px;
+        height: calc(100% - 50px);
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        background-color: rgba(0, 0, 0, 0.1);
+        background-clip: padding-box;
+    }
+
+    .comment-border-link:hover {
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .comment-body {
+        padding: 0 20px;
+        padding-left: 28px;
+    }
+
+    .replies {
+        margin-left: 28px;
+    }
+
+    /* Adjustments for toggleable comments */
+
+    details.comment summary {
+        position: relative;
+        list-style: none;
+        cursor: pointer;
+    }
+
+    details.comment summary::-webkit-details-marker {
+        display: none;
+    }
+
+    details.comment:not([open]) .comment-heading {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
+
+    .comment-heading::after {
+        display: inline-block;
+        position: absolute;
+        right: 5px;
+        align-self: center;
+        font-size: 12px;
+        color: rgba(0, 0, 0, 0.55);
+    }
+
+    details.comment[open] .comment-heading::after {
+        content: "Click to hide";
+    }
+
+    details.comment:not([open]) .comment-heading::after {
+        content: "Click to show";
+    }
+
+    /* Adjustment for Internet Explorer */
+
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        /* Resets cursor, and removes prompt text on Internet Explorer */
+        .comment-heading {
+            cursor: default;
+        }
+        details.comment[open] .comment-heading::after,
+        details.comment:not([open]) .comment-heading::after {
+            content: " ";
+        }
+    }
+
+    /* Styling the reply to comment form */
+
+    .reply-form textarea {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        font-size: 16px;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 15px;
+        margin-bottom: 5px;
+    }
+
+    .d-none {
+        display: none;
+    }
+
+
+    .comment-form {
+        max-width: 700px;
+        margin: 0 auto;
+        text-align: center;
+        background-color: #fff;
+        padding: 0 30px;
+
+        textarea {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            font-size: 16px;
+            width: 100%;
+            max-width: 100%;
+            margin-top: 20px;
+            margin-bottom: 5px;
+        }
+
+        button {
+
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            appearance: none;
+            font-size: 14px;
+            padding: 4px 8px;
+            margin-bottom: 80px;
+            color: rgba(0, 0, 0, 0.85);
+            background-color: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+
+
+                &:hover,
+                &:focus,
+                &:active {
+                    cursor: pointer;
+                    background-color: #ecf0f1;
+                }
+            }
+
+    }
+
+}
 
 //added classes
 .messages {
