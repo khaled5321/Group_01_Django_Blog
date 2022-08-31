@@ -72,94 +72,231 @@
                                         <small class="text-muted me-auto p-2">Travel || OCT 13, 2000</small>
                                         <small class="text-muted p-2">#Paris #Eiffel Tower</small>
                                     </p>
+                                    <div class="card-text likeCount">
+                                        <form method="post" id="likeOR" class="d-flex">
+                                            <div class="like d-flex">
+                                                <button type="submit" class="like_icon"><i class="fa-2x fa-solid fa-heart"></i></button>
+                                                <p class="like_count">100</p>
+                                            </div>
+                                            <div class="dislike d-flex">
+                                                <button type="submit" class="dislike_icon"><i class="fa-2x fa-solid fa-heart-crack"></i></button>
+                                                <p class="dislike_count">24</p>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--  Comments Section          -->
-            <h3 class="num-comments">6 Comments</h3>
-            <ul class="comment-list col-lg-8 col-sm-11 ">
-                <li class="comment">
-                  <div class="comment-body">
-                    <h3>Jacob Smith</h3>
-                    <div class="meta">January 9, 2018 at 2:21pm</div>
-                    <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus,
-                      ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum
-                      impedit necessitatibus, nihil?</p>
-                    <p><a href="#" class="reply btn btn-secondary btn-sm">Reply</a></p>
-                  </div>
-                </li>
 
-                <li class="comment">
-                  <div class="comment-body">
-                    <h3>Chris Meyer</h3>
-                    <div class="meta">January 9, 2018 at 2:21pm</div>
-                    <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus,
-                      ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum
-                      impedit necessitatibus, nihil?</p>
-                    <p><a href="#" class="reply btn btn-secondary btn-sm">Reply</a></p>
-                  </div>
+                                                                        <!--  Comments Section    -->
+            <h3 class="num-comments">4 Comments</h3>
+            <div class="comment-thread">
+                <!-- Comment 1 start -->
+                <details open class="comment" id="comment-1">
+                    <a href="#comment-1" class="comment-border-link">
+                        <span class="sr-only">Jump to comment-1</span>
+                    </a>
+                    <summary>
+                        <div class="comment-heading">
+                            <div class="comment-voting">
+                                <button type="button">
+                                    <span aria-hidden="true">&#9650;</span>
+                                    <span class="sr-only">Vote up</span>
+                                </button>
+                                <button type="button">
+                                    <span aria-hidden="true">&#9660;</span>
+                                    <span class="sr-only">Vote down</span>
+                                </button>
+                            </div>
+                            <div class="comment-info">
+                                <a href="#" class="comment-author">Khalid</a>
+                                <p class="m-0">
+                                    22 points &bull; 4 days ago
+                                </p>
+                            </div>
+                        </div>
+                    </summary>
 
-                  <ul class="children">
-                    <li class="comment">
-                      <div class="comment-body">
-                        <h3>Chintan Patel</h3>
-                        <div class="meta">January 9, 2018 at 2:21pm</div>
-                        <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum
-                          necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure!
-                          Quam voluptas earum impedit necessitatibus, nihil?</p>
-                        <p><a href="#" class="reply btn btn-secondary btn-sm">Reply</a></p>
-                      </div>
+                    <div class="comment-body">
+                        <p>
+                            Oh, I hope some day I'll make it out of here, Even if takes all night or a hundred years, Need a place
+                            to hide but I can't find one near, Wanna feel alive outside I can fight my fear.
+                        </p>
+                        <button type="button" data-toggle="reply-form" data-target="comment-1-reply-form">Reply</button>
+                        <button type="button">Flag</button>
 
+                        <!-- Reply form start -->
+                        <form method="POST" class="reply-form d-none" id="comment-1-reply-form">
+                            <textarea placeholder="Reply to comment" rows="4"></textarea>
+                            <button type="submit">Submit</button>
+                            <button type="button" data-toggle="reply-form" data-target="comment-1-reply-form">Cancel</button>
+                        </form>
+                        <!-- Reply form end -->
+                    </div>
 
-                      <ul class="children">
-                        <li class="comment">
-                          <div class="comment-body">
-                            <h3>Jean Doe</h3>
-                            <div class="meta">January 9, 2018 at 2:21pm</div>
-                            <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum
-                              necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste
-                              iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                            <p><a href="#" class="reply btn btn-secondary btn-sm">Reply</a></p>
-                          </div>
+                    <div class="replies">
+                        <!-- Comment 2 start -->
+                        <details open class="comment" id="comment-2">
+                            <a href="#comment-2" class="comment-border-link">
+                                <span class="sr-only">Jump to comment-2</span>
+                            </a>
+                            <summary>
+                                <div class="comment-heading">
+                                    <div class="comment-voting">
+                                        <button type="button">
+                                            <span aria-hidden="true">&#9650;</span>
+                                            <span class="sr-only">Vote up</span>
+                                        </button>
+                                        <button type="button">
+                                            <span aria-hidden="true">&#9660;</span>
+                                            <span class="sr-only">Vote down</span>
+                                        </button>
+                                    </div>
+                                    <div class="comment-info">
+                                        <a href="#" class="comment-author">Billie Eilish</a>
+                                        <p class="m-0">
+                                            4 points &bull; 3 days ago
+                                        </p>
+                                    </div>
+                                </div>
+                            </summary>
 
-                          <ul class="children">
-                            <li class="comment">
-                              <div class="comment-body">
-                                <h3>Ben Afflick</h3>
-                                <div class="meta">January 9, 2018 at 2:21pm</div>
-                                <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum
-                                  necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente
-                                  iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                                <p><a href="#" class="reply btn btn-secondary btn-sm">Reply</a></p>
-                              </div>
-                            </li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
+                            <div class="comment-body">
+                                <p>
+                                    Isn't lovely all alone? Heart made of glass my mind of stone, Tear me to pieces skin to bone
+                                    , Hello welcome home
+                                </p>
+                                <button type="button" data-toggle="reply-form" data-target="comment-2-reply-form">Reply</button>
+                                <button type="button">Flag</button>
 
-                <li class="comment">
-                  <div class="comment-body">
-                    <h3>Jean Doe</h3>
-                    <div class="meta">January 9, 2018 at 2:21pm</div>
-                    <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus,
-                      ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum
-                      impedit necessitatibus, nihil?</p>
-                    <p><a href="#" class="reply btn btn-secondary btn-sm">Reply</a></p>
-                  </div>
-                </li>
-            </ul>
+                                <!-- Reply form start -->
+                                <form method="POST" class="reply-form d-none" id="comment-2-reply-form">
+                                    <textarea placeholder="Reply to comment" rows="4"></textarea>
+                                    <button type="submit">Submit</button>
+                                    <button type="button" data-toggle="reply-form" data-target="comment-2-reply-form">Cancel</button>
+                                </form>
+                                <!-- Reply form end -->
+                            </div>
+                        </details>
+                        <!-- Comment 2 end -->
 
-            <div class="input-group message">
-                <textarea class="form-control" aria-label="With textarea" placeholder="Leave A Comment..."></textarea>
-                <a href="#" class="input-group-text send">Send</a>
-
+                        <a href="#load-more">Load more replies</a>
+                    </div>
+                </details>
+                <!-- Comment 1 end -->
             </div>
+
+            <div class="comment-thread">
+                <!-- Comment 3 start -->
+                <details open class="comment" id="comment-3">
+                    <a href="#comment-3" class="comment-border-link">
+                        <span class="sr-only">Jump to comment-1</span>
+                    </a>
+                    <summary>
+                        <div class="comment-heading">
+                            <div class="comment-voting">
+                                <button type="button">
+                                    <span aria-hidden="true">&#9650;</span>
+                                    <span class="sr-only">Vote up</span>
+                                </button>
+                                <button type="button">
+                                    <span aria-hidden="true">&#9660;</span>
+                                    <span class="sr-only">Vote down</span>
+                                </button>
+                            </div>
+                            <div class="comment-info">
+                                <a href="#" class="comment-author">Rihanna</a>
+                                <p class="m-0">
+                                    22 points &bull; 4 days ago
+                                </p>
+                            </div>
+                        </div>
+                    </summary>
+
+                    <div class="comment-body">
+                        <p>
+                            Just gonna stand there and watch me burn?
+                            Well, that's alright, because I like the way it hurts
+                            Just gonna stand there and hear me cry?
+                            Well, that's alright, because I love the way you lie
+                            I love the way you lie
+                        </p>
+                        <button type="button" data-toggle="reply-form" data-target="comment-3-reply-form">Reply</button>
+                        <button type="button">Flag</button>
+
+                        <!-- Reply form start -->
+                        <form method="POST" class="reply-form d-none" id="comment-3-reply-form">
+                            <textarea placeholder="Reply to comment" rows="4"></textarea>
+                            <button type="submit">Submit</button>
+                            <button type="button" data-toggle="reply-form" data-target="comment-1-reply-form">Cancel</button>
+                        </form>
+                        <!-- Reply form end -->
+                    </div>
+
+                    <div class="replies">
+                        <!-- Comment 4 start -->
+                        <details open class="comment" id="comment-4">
+                            <a href="#comment-4" class="comment-border-link">
+                                <span class="sr-only">Jump to comment-4</span>
+                            </a>
+                            <summary>
+                                <div class="comment-heading">
+                                    <div class="comment-voting">
+                                        <button type="button">
+                                            <span aria-hidden="true">&#9650;</span>
+                                            <span class="sr-only">Vote up</span>
+                                        </button>
+                                        <button type="button">
+                                            <span aria-hidden="true">&#9660;</span>
+                                            <span class="sr-only">Vote down</span>
+                                        </button>
+                                    </div>
+                                    <div class="comment-info">
+                                        <a href="#" class="comment-author">Eminem</a>
+                                        <p class="m-0">
+                                            4 points &bull; 3 days ago
+                                        </p>
+                                    </div>
+                                </div>
+                            </summary>
+
+                            <div class="comment-body">
+                                <p>
+                                    I can only tell you what it feels like
+                                    And right now, there's a steel knife in my windpipe
+                                    I can't breathe, but I still fight while I can fight
+                                    As long as the wrong feels right, it's like I'm in flight
+                                    High off of love, drunk from her hate
+                                    It's like I'm huffing paint and I love her, the more I suffer
+                                </p>
+                                <button type="button" data-toggle="reply-form" data-target="comment-4-reply-form">Reply</button>
+                                <button type="button">Flag</button>
+
+                                <!-- Reply form start -->
+                                <form method="POST" class="reply-form d-none" id="comment-4-reply-form">
+                                    <textarea placeholder="Reply to comment" rows="4"></textarea>
+                                    <button type="submit">Submit</button>
+                                    <button type="button" data-toggle="reply-form" data-target="comment-4-reply-form">Cancel</button>
+                                </form>
+                                <!-- Reply form end -->
+                            </div>
+                        </details>
+                        <!-- Comment 4 end -->
+
+                        <a href="#load-more">Load more replies</a>
+                    </div>
+                </details>
+                <!-- Comment 3 end -->
+            </div>
+
+
+            <form method="POST" class="comment-form" id="comment">
+                <textarea placeholder="Add a Comment..." rows="4"></textarea>
+                <button type="submit">Send</button>
+            </form>
 
         </div>
     </div>
