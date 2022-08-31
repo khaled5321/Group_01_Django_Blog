@@ -68,7 +68,7 @@
                                     <!-- category || created at   and tags -->
                                     <p class="card-text d-flex">
                                         <small class="text-muted me-auto p-2">{{object.category_id}} || {{object.created_at}}</small>
-                                        <small class="text-muted p-2">{% for tag in object.tags.all %} #{{ tag.name }} {% endfor %} </small>
+                                        <small class="text-muted p-2">{% for tag in object.tags.all %}<a href="{% url 'posts_by_tag' tag.name %}">#{{ tag.name }}</a>  {% endfor %} </small>
                                     </p>
                                     <div class="card-text likeCount">
                                         <form method="post" id="likeOR" class="d-flex">

@@ -7,16 +7,29 @@ from .models import Category
 from posts.models import Post
 
 
-def show_category(request, pk):
-    categories = Category.objects.all()
-    category = Category.objects.get(pk=pk)
-    posts=category.cat_posts.all()
-    return render(request, "posts/home.html", 
-    {
-        "object_list":posts, 
-        'categories':categories, 
-        'title':category.name
-    })
+class ShowCategory(ListView):
+    model=Post
+    template_name="posts/home.html"
+    paginate_by = 5
+
+    def get_context_data(self,*args,**kwargs):
+        context = super(ShowCategory,self).get_context_data(*args,**kwargs)
+        context['categories'] = Category.objects.all()
+        category = Category.objects.get(pk=self.kwargs['pk'])
+        context['category'] = category
+        context['title']=category.name
+        return context
+    
+    def get_queryset(self):
+        q = self.request.GET.get('q')
+        category = Category.objects.get(pk=self.kwargs['pk'])
+        object_list = category.cat_posts.all()
+
+        if q:
+            object_list = self.model.objects.filter(Q(title__icontains=q) | Q(tags__name__icontains=q))
+        return object_list
+
+
     
 def subscribe(request, pk):
     if not request.user.is_authenticated:

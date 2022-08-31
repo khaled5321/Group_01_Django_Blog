@@ -64,9 +64,8 @@ class Detailposts(DetailView):
 class Showposts(ListView):
     model=Post
     template_name="posts/home.html"
-    ordering=['-created_at', '-likes']
     paginate_by = 5
-   
+
     def get_context_data(self,*args,**kwargs):
         context = super(Showposts,self).get_context_data(*args,**kwargs)
         # passing cat_menu
@@ -91,7 +90,7 @@ class Tagsposts(ListView):
     queryset=Post.objects.all()
 
     def get_context_data(self,*args,**kwargs):
-        context = super(Showposts,self).get_context_data(*args,**kwargs)
+        context = super(Tagsposts,self).get_context_data(*args,**kwargs)
         # passing cat_menu
         context['categories'] = Category.objects.all()
         context['tilte'] = self.kwargs.get('tag_slug')

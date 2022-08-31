@@ -28,8 +28,8 @@ class Post(models.Model):
     def total_likes(self):
         return self.likes.count()
 
-    # class Meta:
-    #     ordering = ['-created_at', '-likes'] 
+    class Meta:
+        ordering = ['-created_at']
 
     def __str__(self):
         return self.title
