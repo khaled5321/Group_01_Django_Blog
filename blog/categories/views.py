@@ -48,6 +48,11 @@ class SubscribedCategories(ListView):
     model=Post
     template_name="posts/home.html"
     paginate_by = 5
+    
+    def get(self, *args, **kwargs):
+        if not self.request.user.subscribed_categories.all():
+            return redirect('home')
+        return super(SubscribedCategories, self).get(*args, **kwargs)
 
     def get_context_data(self,*args,**kwargs):
         context = super(SubscribedCategories,self).get_context_data(*args,**kwargs)
@@ -65,7 +70,7 @@ class SubscribedCategories(ListView):
             for cat in subscribed_categories:
                 objectlist = self.model.objects.filter(category_id=cat)
                 object_list = objectlist |object_list 
-
+    
         if q:
             object_list = self.model.objects.filter(Q(title__icontains=q) | Q(tags__name__icontains=q))
 

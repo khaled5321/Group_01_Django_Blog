@@ -1,7 +1,8 @@
 from django.contrib import admin
 from.models import Post
-from.models import Comment,Reply
+from.models import Comment,Reply, BadWord
 
+admin.site.register(BadWord)
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):

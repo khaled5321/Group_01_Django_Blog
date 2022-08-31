@@ -16,21 +16,24 @@ class Post(models.Model):
     created_at=models.DateTimeField(auto_now_add=True,null=True)
     edited_at=models.DateTimeField(auto_now=True)
 
-    likes=models.ManyToManyField(User, related_name='blog_likes')
-    dislikes=models.ManyToManyField(User, related_name='blog_dislikes')
+    likes=models.ManyToManyField(User, related_name='blog_likes', blank=True)
+    # likes = models.IntegerField(null=True, blank=True)
+    dislikes=models.ManyToManyField(User, related_name='blog_dislikes',  blank=True)
+    # dislikes = models.IntegerField(null=True, blank=True)
 
     category_id=models.ForeignKey(Category ,on_delete=models.CASCADE,null=True,related_name='cat_posts')
     user=models.ForeignKey(User ,on_delete=models.CASCADE,null=True,related_name='user_posts')
     
-    class Meta:
-        ordering = ['-created_at', '-likes'] 
+
+    def total_likes(self):
+        return self.likes.count()
+
+    # class Meta:
+    #     ordering = ['-created_at', '-likes'] 
 
     def __str__(self):
         return self.title
     
-    def total_likes(self):
-        return self.likes.count()
-   
     def get_image_url(self):
         return f"/media/{self.image}"
  

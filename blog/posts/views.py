@@ -64,12 +64,14 @@ class Detailposts(DetailView):
 class Showposts(ListView):
     model=Post
     template_name="posts/home.html"
+    ordering=['-created_at', '-likes']
     paginate_by = 5
    
     def get_context_data(self,*args,**kwargs):
         context = super(Showposts,self).get_context_data(*args,**kwargs)
         # passing cat_menu
         context['categories'] = Category.objects.all()
+        context['title'] = 'Top Posts'
         return context
     
     def get_queryset(self):

@@ -6,6 +6,7 @@
     <!-- side bar -->
     <div>
         <div class="container">
+            <h1 class="text-center"> {{title}}</h1>
             <div class="row">
                 <div class="col-lg-4 col-sm-auto col-5">
                     <div id="searchbar">
@@ -30,7 +31,7 @@
                             <ul class="list-group list-group-flush">
                                 {% for cat in categories %}
                                 <li class="list-group-item d-flex flex-column flex-lg-row">
-                                    <a href="#" class="btn btn-outline-light">{{cat.name}}</a>
+                                    <a href="{% url 'show_category' cat.id %}" class="btn btn-outline-light">{{cat.name}}</a>
                                     {% if user.is_authenticated %}
                                         <a href="{% url 'subscribe' cat.id %}" class="text-center">
                                             <button class="btn btn-secondary btn-sm subscribe">
@@ -62,7 +63,7 @@
                         {% for obj in object_list %}
                         <div class="col-md-6">
                             <div class="card mb-3">
-                                <a href="{% url 'post_details' obj.id %}" class="">
+                                <a href="{% url 'postinfo' obj.id %}" class="">
                                     <img src="{{ obj.get_image_url }}" class="card-img-top card-img" alt="...">
                                 </a>
                                 <div class="card-body">
