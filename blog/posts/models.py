@@ -17,9 +17,7 @@ class Post(models.Model):
     edited_at=models.DateTimeField(auto_now=True)
 
     likes=models.ManyToManyField(User, related_name='blog_likes', blank=True)
-    # likes = models.IntegerField(null=True, blank=True)
     dislikes=models.ManyToManyField(User, related_name='blog_dislikes',  blank=True)
-    # dislikes = models.IntegerField(null=True, blank=True)
 
     category_id=models.ForeignKey(Category ,on_delete=models.CASCADE,null=True,related_name='cat_posts')
     user=models.ForeignKey(User ,on_delete=models.CASCADE,null=True,related_name='user_posts')

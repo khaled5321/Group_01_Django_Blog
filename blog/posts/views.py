@@ -36,9 +36,16 @@ class Detailposts(DetailView):
             elif not self.object.dislikes.filter(id=request.user.id).exists():
                 self.object.dislikes.add(request.user)
             
-        if self.object.dislikes.count() == 10:
-            self.object.delete()
-            return redirect('deleted')
+            if self.object.dislikes.count() == 10:
+                self.object.delete()
+                return redirect('deleted')
+
+        elif option == 'comment':
+            content = self.request.POST.get('comment')
+            Comment.objects.create(content=content, post=self.object, user=request.user)
+
+        elif option == 'reply':
+            pass
 
         return redirect('postinfo',self.object.id)
 
@@ -87,15 +94,6 @@ class Detailposts(DetailView):
        
 #         return context
        
-
-
-# class Createreplies(CreateView):
-#     # form_class = ReplyModelForm
-#     template_name = "posts/create.html"
-   
-#     def get_success_url(self):
-#         return reverse_lazy('postinfo', kwargs={'pk': self.object.reply_post.pk})
-    
     
 class Showposts(ListView):
     model=Post
@@ -117,7 +115,6 @@ class Showposts(ListView):
             object_list = self.model.objects.filter(Q(title__icontains=q) | Q(tags__name__icontains=q))
 
         return object_list    
-
 
 
 class Tagsposts(ListView):
