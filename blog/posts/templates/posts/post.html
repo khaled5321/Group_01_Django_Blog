@@ -1,0 +1,114 @@
+{%extends 'posts/base.html'%} 
+{% load static %}
+
+{% block container %}
+<br/><br/>
+    <div >
+      <div >
+        <h3 align="center"> {{post.title}} </h3>
+      
+        {
+
+          <div class="card" style="width: 18rem">
+          
+            <img
+          src="{{post.get_image_url}}"
+          class="card-img-top"
+          alt="bookcover"
+        />
+            <div class="card-body ">
+              <h5 class="card-title">{{post.title}}</h5>
+              <form action="{% url 'like_post' post.pk %}" method="POST">
+                {%csrf_token%}
+                {% if user.is_authenticated %}
+                   {% if liked%}
+              <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-danger btn-sm">Unlike</button>
+                    {% else%}
+              <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-primary btn-sm">like</button>{% endif %}
+                {% else%}
+                Please log in First 
+                {% endif %}
+                &nbsp;{{ total_likes }}
+                likes
+              </form>
+              <p class="card-text">{{post.content}}</p>
+              
+              <p class="card-text"> {{ post.created_at }}</p>
+              
+              
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+  
+
+ 
+  
+  </div>
+    
+  
+  <div class=" m-5" style="width:30rem;position:relative ;top:-600px;left:700px;">
+    <h2>Comments....</h2><br/><br/><br/>
+    
+    {% if not post.comment_post.all%}
+    <hr/>
+      No Comment Yet...
+      <form class="m-5" method="POST" >
+        {%csrf_token%}
+      <a class="btn btn-success" href="{% url 'create'%}">Add comment</a>
+    </form>
+    {% else %}
+   
+    {% for comment in post.comment_post.all %}
+     
+    <hr/>
+    <h5><strong>{{ comment.post.user }} - {{ comment.name }}</strong></h5>
+    
+    <small>{{ comment.created_at }}</small><br/><br/>
+    <p>{{ comment.body }}</p>
+    <hr/>
+   
+           {% if not reply.replies.all %}
+    
+    No Reply Yet...
+    <form class="m-5" method="POST" >
+      {%csrf_token%}
+      <hr/>
+        <a class="btn btn-danger" href="{% url 'createreply' %}">Reply</a>
+      </form>
+      {% comment %} {{ r.reply_post.user }} {% endcomment %}
+      {% else %}
+            {% for r in reply.replies.all %}
+    <h5><strong> - {{ r.reply_name }}</strong></h5>
+    
+    <small>{{ r.reply_created_at }}</small><br/><br/>
+    <p>{{ r.reply_body }}</p>
+    <hr/>
+        {% endfor %}
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    
+    <h4 class="m-5">Add new Comment</h4>
+<form class="m-5" method="POST" >
+    {%csrf_token%}
+   
+    <a class="btn btn-success" href="{% url 'create'%}">Add</a>
+    
+  </form>
+    </div>
+  </div>
+  
+</div>
+
+
+
+
+
+{% endblock %}
+
+  
+   
