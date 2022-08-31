@@ -1,0 +1,50 @@
+
+{%extends 'posts/base.html'%} 
+{% load static %}
+
+{% block container %}
+
+<div  class="m-5" >
+  <div class="container"  >
+ 
+
+    <div class="row m-5" align="center">
+  
+      {% for post in top_posts %}
+
+      <div class="card m-3" style="width: 18rem">
+       
+
+        <a href="{% url 'postinfo' post.id %}"><img
+          src="{{post.get_image_url}}"
+          class="card-img-top"
+          alt="postcover"
+        /></a>
+        <div class="card-body">
+          <h4 class="card-title btn btn-outline-info mb-4">{{post.user}}</h4>
+          <h5 class="card-title">{{post.title}}</h5>
+          <p class="card-text">{{post.content|slice:":400"}}</p>
+          {% for tag in post.tags.all %}
+          <a href="{% url 'posts_by_tags' tag.slug %}">{{tag.name}}</a>
+       
+          {% endfor %}
+        </div>
+      </div>
+       
+      {% endfor %}
+     
+     
+
+  
+    
+    
+      <p class=" m-5 text-success"><a href="{%url 'postIndex' %}">Back home <a></p>
+   
+ 
+
+
+  
+{% endblock %}
+
+  
+   
