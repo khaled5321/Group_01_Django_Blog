@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponseRedirect
+from django.shortcuts import render,redirect
 from django.urls import reverse
 from django.views.generic import ListView,DetailView
 from django.shortcuts import get_object_or_404
@@ -10,20 +10,43 @@ from .models import Post, Comment, Reply, BadWord
 class Detailposts(DetailView):
     model=Post
     template_name = "posts/post.html"
+    
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        option=self.request.POST.get('option')
+        if option == 'like':
+            if self.object.likes.filter(id=request.user.id).exists():
+                self.object.likes.remove(request.user)
+            else:
+                self.object.likes.add(request.user)
+        elif option == 'dislike':
+            if self.object.likes.filter(id=request.user.id).exists():
+                self.object.likes.remove(request.user)
+                self.object.dislikes.add(request.user)
+
+            elif self.object.dislikes.filter(id=request.user.id).exists():
+                self.object.dislikes.remove(request.user)
+
+        return redirect('postinfo',self.object.id)
+
+    def get_object(self):
+        object = get_object_or_404(Post,id=self.kwargs['pk'])
+        return object
 
     #passing number of likes by context
     def get_context_data(self,*args,**kwargs):
         context = super(Detailposts,self).get_context_data(*args,**kwargs)
         context['categories'] = Category.objects.all()
-        context['object']=get_object_or_404(Post,id=self.kwargs['pk'])
-
-        # total_likes=object.total_likes()
-        # liked=False
-        # if object.likes.filter(id=self.request.user.id).exists():
-        #     liked=True
+        object=self.get_object()
+        liked=False
+        disliked= False
+        if object.likes.filter(id=self.request.user.id).exists():
+            liked=True
+        if object.dislikes.filter(id=self.request.user.id).exists():
+            disliked=True
         
-        # context['total_likes'] = total_likes
-        # context['liked'] = liked
+        context['liked'] = liked
+        context['disliked'] = disliked
         
         return context
 
@@ -100,16 +123,3 @@ class Tagsposts(ListView):
     def get_queryset(self):
         object_list = Post.objects.filter(tags__slug=self.kwargs.get('tag_slug')) 
         return object_list
-    
-    
-    
-# def likeview(request,post_id):
-#     post= get_object_or_404(Post,id=request.POST.get('post_id'))
-#     liked=False
-#     if post.likes.filter(id=request.user.id).exists():
-#         post.likes.remove(request.user)
-#         liked=False
-#     else:
-#         post.likes.add(request.user)
-#         liked=True
-#     return HttpResponseRedirect(reverse('postinfo',args=[str(post_id)]))

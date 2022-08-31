@@ -71,13 +71,18 @@
                                         <small class="text-muted p-2">{% for tag in object.tags.all %}<a href="{% url 'posts_by_tag' tag.name %}">#{{ tag.name }}</a>  {% endfor %} </small>
                                     </p>
                                     <div class="card-text likeCount">
-                                        <form method="post" id="likeOR" class="d-flex">
+                                        <form method="POST" id="likeOR" class="d-flex">
+                                            {% csrf_token %}
                                             <div class="like d-flex">
-                                                <button type="submit" class="like_icon"><i class="fa-2x fa-solid fa-heart"></i></button>
+                                                <button type="submit" name='option' value="like" class="like_icon">
+                                                    <i class="fa-2x fa-solid fa-heart" {% if liked %} style="color:red" {% endif %}></i>
+                                                </button>
                                                 <p class="like_count">{{object.likes.count}}</p>
                                             </div>
                                             <div class="dislike d-flex">
-                                                <button type="submit" class="dislike_icon"><i class="fa-2x fa-solid fa-heart-crack"></i></button>
+                                                <button type="submit" name='option' value="dislike" class="dislike_icon">
+                                                    <i class="fa-2x fa-solid fa-heart-crack" {% if disliked %} style="color:red" {% endif %}></i>
+                                                </button>
                                                 <p class="dislike_count">{{object.dislikes.count}}</p>
                                             </div>
                                         </form>
