@@ -45,7 +45,15 @@ class Detailposts(DetailView):
             Comment.objects.create(content=content, post=self.object, user=request.user)
 
         elif option == 'reply':
-            pass
+            content = self.request.POST.get('content')
+            comment_id = self.request.POST.get('comment_id')
+            comment= Comment.objects.get(id=comment_id)
+            Reply.objects.create(
+                reply_post=self.object, 
+                comment=comment, 
+                user=request.user,
+                content=content,
+                )
 
         return redirect('postinfo',self.object.id)
 
@@ -69,31 +77,7 @@ class Detailposts(DetailView):
         context['disliked'] = disliked
         
         return context
-
-   
-# class Showcomments(DetailView):
-#     model=Post
     
-#     template_name = "posts/post.html"
-    
-#     #passing number of likes by context
-#     def get_context_data(self,*args,**kwargs):
-#         context = super(Createposts,self).get_context_data(*args,**kwargs)
-       
-#         # comments=Comment.objects.all()
-#         fool_lang=['bad','stuipd','dumb','boo']
-#         # allcomments=[]
-#         # for comment in comments:
-#         #     for fool in fool_lang:
-#         #         if fool in comment['body']:
-#         #             comment['body']=comment['body'].replace(fool,'*****')
-#         #             allcomments.append(comment)
-#         #         else:
-#         #             allcomments.append(comment)
-#         context['fool_lang']=fool_lang
-       
-#         return context
-       
     
 class Showposts(ListView):
     model=Post

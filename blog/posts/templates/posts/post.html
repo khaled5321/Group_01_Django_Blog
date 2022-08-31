@@ -138,6 +138,7 @@
                         <form method="POST" class="reply-form d-none" id="comment-{{ forloop.counter }}-reply-form">
                             {% csrf_token %}
                             <textarea placeholder="Reply to comment" rows="4" name="content"></textarea>
+                            <input type="text"  hidden name="comment_id" value="{{ comment.id }}">
                             <!-- ! HERE -->
                             <button type="submit" name="option" value="reply">Submit</button>
                             <button type="button" data-toggle="reply-form" data-target="comment-{{ forloop.counter }}-reply-form">Cancel</button>
@@ -148,9 +149,9 @@
                     <div class="replies">
                         <!-- Comment 2 start -->
                         {% for reply in comment.replies.all  %}
-                        <details open class="comment" id="comment-{{ forloop.counter|add:'1' }}">
-                            <a href="#comment-{{ forloop.counter|add:'1'}}" class="comment-border-link">
-                                <span class="sr-only">Jump to comment-{{ forloop.counter|add:'1' }}</span>
+                        <details open class="comment" id="comment-{{ reply.id }}">
+                            <a href="#comment-{{ reply.id}}" class="comment-border-link">
+                                <span class="sr-only">Jump to comment-{{ reply.id }}</span>
                             </a>
                             <summary>
                                 <div class="comment-heading">
@@ -177,15 +178,16 @@
                                 <p>
                                     {{reply.content}}
                                 </p>
-                                <button type="button" data-toggle="reply-form" data-target="comment-{{ forloop.counter|add:'1' }}-reply-form">Reply</button>
+                                <!-- <button type="button" data-toggle="reply-form" data-target="comment-{{ reply.id }}-reply-form">Reply</button> -->
                                 <button type="button">Flag</button>
 
                                 <!-- Reply form start -->
-                                <form method="POST" class="reply-form d-none" id="comment-{{ forloop.counter|add:'1' }}-reply-form">
+                                <form method="POST" class="reply-form d-none" id="comment-{{ reply.id }}-reply-form">
                                     {% csrf_token %}
                                     <textarea placeholder="Reply to comment" rows="4" name="reply"></textarea>
                                     <button type="submit" name="option" value="reply">Submit</button> <!-- ! HERE -->
-                                    <button type="button" data-toggle="reply-form" data-target="comment-{{ forloop.counter|add:'1' }}-reply-form">Cancel</button>
+                                    <input type="text"  hidden name="comment_id" value="{{ comment.id }}">
+                                    <button type="button" data-toggle="reply-form" data-target="comment-{{ reply.id }}-reply-form">Cancel</button>
                                 </form>
                                 <!-- Reply form end -->
                             </div>
