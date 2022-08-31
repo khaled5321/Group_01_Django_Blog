@@ -7,6 +7,16 @@ from categories.models import Category
 from .models import Post, Comment, Reply, BadWord
 
 
+def check_for_bad_words(str):
+    bad_words=BadWord.objects.all()
+
+    for bad_word in bad_words:
+        if bad_word.word in str:
+            str=str.replace(bad_word.word,len(bad_word.word)*'*')
+    
+    return str
+
+
 class Detailposts(DetailView):
     model=Post
     template_name = "posts/post.html"
@@ -42,10 +52,13 @@ class Detailposts(DetailView):
 
         elif option == 'comment':
             content = self.request.POST.get('comment')
+            content = check_for_bad_words(content)
             Comment.objects.create(content=content, post=self.object, user=request.user)
+
 
         elif option == 'reply':
             content = self.request.POST.get('content')
+            content = check_for_bad_words(content)
             comment_id = self.request.POST.get('comment_id')
             comment= Comment.objects.get(id=comment_id)
             Reply.objects.create(
