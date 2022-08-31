@@ -23,10 +23,6 @@ class Post(models.Model):
 
     category_id=models.ForeignKey(Category ,on_delete=models.CASCADE,null=True,related_name='cat_posts')
     user=models.ForeignKey(User ,on_delete=models.CASCADE,null=True,related_name='user_posts')
-    
-
-    def total_likes(self):
-        return self.likes.count()
 
     class Meta:
         ordering = ['-created_at']

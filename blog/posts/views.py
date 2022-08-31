@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from django.urls import reverse
+from django.contrib import messages
 from django.views.generic import ListView,DetailView
 from django.shortcuts import get_object_or_404
 from django.db.models import Q
@@ -13,19 +13,32 @@ class Detailposts(DetailView):
     
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
+
+        if not request.user.is_authenticated:
+            messages.error(request, 'You have to login first!')
+            return redirect('postinfo',self.object.id)
+
         option=self.request.POST.get('option')
         if option == 'like':
             if self.object.likes.filter(id=request.user.id).exists():
                 self.object.likes.remove(request.user)
             else:
                 self.object.likes.add(request.user)
+
         elif option == 'dislike':
             if self.object.likes.filter(id=request.user.id).exists():
                 self.object.likes.remove(request.user)
                 self.object.dislikes.add(request.user)
-
+    
             elif self.object.dislikes.filter(id=request.user.id).exists():
                 self.object.dislikes.remove(request.user)
+            
+            elif not self.object.dislikes.filter(id=request.user.id).exists():
+                self.object.dislikes.add(request.user)
+            
+        if self.object.dislikes.count() == 10:
+            self.object.delete()
+            return redirect('deleted')
 
         return redirect('postinfo',self.object.id)
 
@@ -123,3 +136,6 @@ class Tagsposts(ListView):
     def get_queryset(self):
         object_list = Post.objects.filter(tags__slug=self.kwargs.get('tag_slug')) 
         return object_list
+
+def deleted(request):
+    return render(request,'posts/deleted.html')
