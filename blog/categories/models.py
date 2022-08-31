@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404
 
 
 class Category(models.Model):
-    name=models.CharField(max_length=120,default="Films")
+    name=models.CharField(max_length=120)
 
     def __str__(self):
         return self.name
