@@ -1,23 +1,21 @@
 from django.contrib import admin
-
 from.models import Post
 from.models import Comment,Reply
-# admin.site.register(Post),ReplyComment
 
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display=['title','get_tags']
-    
-    def get_tags(self,obj):
-        return ",".join(ob for ob in obj.tags.names())
+    list_display=['title','_tags']
+    save_as = True
+    def _tags(self,obj):
+        return ", ".join(ob for ob in obj.tags.names())
     
 
 @admin.register(Comment)
-class PostAdmin(admin.ModelAdmin):
-    list_display=['name','post']
+class CommentAdmin(admin.ModelAdmin):
+    list_display=['user','content', 'created_at']
     
 @admin.register(Reply)
-class PostAdmin(admin.ModelAdmin):
-    list_display=['reply_name','reply_post','reply']
+class ReplyAdmin(admin.ModelAdmin):
+    list_display=['user','content','created_at']
   

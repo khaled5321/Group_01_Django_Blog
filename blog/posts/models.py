@@ -1,24 +1,30 @@
 from django.db import models
-from taggit.managers import TaggableManager  # there is error regards to this line and its package, you should pip install django-taggit
+from taggit.managers import TaggableManager  
 from django.shortcuts import get_object_or_404
 from categories.models import Category
 from user_interface.models import User
 from django.urls import reverse
-from django.utils import timezone
 
-# Create your models here.
 
 class Post(models.Model):
     title=models.CharField(max_length=40)
     content=models.CharField(null=True, max_length=1000)
+
     tags = TaggableManager()
     image=models.ImageField(upload_to="posts/images/",null=True)
-    created_at=models.DateTimeField(default=timezone.now,null=True)
+
+    created_at=models.DateTimeField(auto_now_add=True,null=True)
     edited_at=models.DateTimeField(auto_now=True)
-    likes=models.ManyToManyField(User ,related_name='blog_post')
-    category_id=models.ForeignKey(Category ,on_delete=models.CASCADE,null=True,related_name='cat_post')
-    user=models.ForeignKey(User ,on_delete=models.CASCADE,null=True,related_name='user_post')
-    # comment=
+
+    likes=models.ManyToManyField(User, related_name='blog_likes')
+    dislikes=models.ManyToManyField(User, related_name='blog_dislikes')
+
+    category_id=models.ForeignKey(Category ,on_delete=models.CASCADE,null=True,related_name='cat_posts')
+    user=models.ForeignKey(User ,on_delete=models.CASCADE,null=True,related_name='user_posts')
+    
+    class Meta:
+        ordering = ['-created_at', '-likes'] 
+
     def __str__(self):
         return self.title
     
@@ -28,7 +34,6 @@ class Post(models.Model):
     def get_image_url(self):
         return f"/media/{self.image}"
  
-  
     @classmethod
     def get_all_object(cls):
         return cls.objects.all()
@@ -40,35 +45,42 @@ class Post(models.Model):
     def show_url(self):
         return reverse("postinfo",args=[self.id])
     
-
     def get_all_url(self):
-        return reverse("postIndex")
-    
-    
+        return reverse("home")
     
     
 class Comment(models.Model):
-    post=models.ForeignKey(Post ,on_delete=models.CASCADE,null=True,related_name='comment_post')
-    name=models.CharField(max_length=240)
-    body=models.TextField()
-    created_at=models.DateTimeField(default=timezone.now,null=True)
-    
+    content=models.TextField(max_length=500)
+    created_at=models.DateTimeField(auto_now_add=True,null=True)
 
-    
-    
+    post=models.ForeignKey(Post ,on_delete=models.CASCADE,null=True,related_name='post_comments')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return'%s - %s'%(self.post,self.name)
-   
+        return self.user.username
+
+    def get_replies(self):
+        return self.replies.all()
+    
    
 class Reply(models.Model):
-    
     reply_post=models.ForeignKey(Post ,on_delete=models.CASCADE,null=True,related_name='re_post')
-    reply_name=models.CharField(max_length=240)
-    reply_body=models.TextField()
-    reply_created_at=models.DateTimeField(default=timezone.now,null=True)
-    reply=models.ForeignKey('Comment' ,null=True,related_name='replies',on_delete=models.CASCADE)
+    comment=models.ForeignKey(Comment, related_name='replies', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     
+    content=models.TextField(max_length=500)
+    created_at=models.DateTimeField(auto_now_add=True,null=True)
+
     def __str__(self):
-        return'%s - %s'%(self.reply_post,self.reply_name)
-    
+        return self.user.username
+
+
+class BadWord(models.Model):
+    word=models.CharField(max_length=120, null=True)
+
+    @classmethod
+    def get_all_object(cls):
+        return cls.objects.all()
+
+    def __str__(self):
+        return self.word

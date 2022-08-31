@@ -1,12 +1,23 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import Category
 from django.core.mail import EmailMessage
-# Create your views here.
+from django.views.generic import ListView
+from django.db.models import Q
+from .models import Category
+from posts.models import Post
+
 
 def show_category(request, pk):
-    pass
-
+    categories = Category.objects.all()
+    category = Category.objects.get(pk=pk)
+    posts=category.cat_posts.all()
+    return render(request, "posts/home.html", 
+    {
+        "object_list":posts, 
+        'categories':categories, 
+        'title':category.name
+    })
+    
 def subscribe(request, pk):
     if not request.user.is_authenticated:
         messages.error(request, "You have to login to subscribe!")
@@ -32,4 +43,30 @@ def subscribe(request, pk):
     
     return redirect(request.META.get('HTTP_REFERER', '/'))
 
-       
+
+class SubscribedCategories(ListView):
+    model=Post
+    template_name="posts/home.html"
+    paginate_by = 5
+
+    def get_context_data(self,*args,**kwargs):
+        context = super(SubscribedCategories,self).get_context_data(*args,**kwargs)
+        context['categories'] = Category.objects.all()
+        context['title']='Subscribed Categories'
+        return context
+    
+    def get_queryset(self):
+        q = self.request.GET.get('q')
+        subscribed_categories= self.request.user.subscribed_categories.all()
+        object_list = self.model.objects.all()
+
+        if subscribed_categories:
+            object_list= self.model.objects.none()
+            for cat in subscribed_categories:
+                objectlist = self.model.objects.filter(category_id=cat)
+                object_list = objectlist |object_list 
+
+        if q:
+            object_list = self.model.objects.filter(Q(title__icontains=q) | Q(tags__name__icontains=q))
+
+        return object_list

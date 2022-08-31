@@ -8,12 +8,6 @@ from .forms import LoginForm
 from .models import User
 
 
-def home(request):
-    categories=Category.objects.all()
-    q=request.GET.get('q')
-    return render(request, 'user_interface/home.html', {'categories':categories})
-
-
 def register(request):
     if request.user.is_authenticated:
         return redirect('home')
@@ -113,8 +107,3 @@ def promote_user(request):
         user.is_superuser=False
         user.save()
     return redirect('/admin/user_interface/user/')
-
-
-def post_details(request):
-    categories=Category.objects.all()
-    return render(request, 'user_interface/post.html', {'categories':categories})
