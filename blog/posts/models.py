@@ -8,7 +8,7 @@ from django.urls import reverse
 
 class Post(models.Model):
     title=models.CharField(max_length=40)
-    content=models.CharField(null=True, max_length=1000)
+    content=models.TextField(null=True, max_length=5000)
 
     tags = TaggableManager()
     image=models.ImageField(upload_to="posts/images/",null=True)

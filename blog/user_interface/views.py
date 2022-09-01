@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.contrib.auth import login, authenticate, logout
 from django.core.validators import validate_email
+from django.contrib.auth.validators import ASCIIUsernameValidator
 from django.core.exceptions import ValidationError
 from categories.models import Category
 from .forms import LoginForm
@@ -22,6 +23,13 @@ def register(request):
             validate_email(email)
         except ValidationError:
             messages.error(request, "Please enter a correct email address!")
+            return redirect('register')
+        
+        try:
+            validator=ASCIIUsernameValidator()
+            validator(user_name)
+        except:
+            messages.error(request, ASCIIUsernameValidator.message)
             return redirect('register')
         
         if User.get_object_or_none(username=user_name):
