@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  background-color: rgb(243, 243, 243);
+  background-color: #FEF9F8;
   font-family: "Roboto", sans-serif;
   height: 100vh;
 }
@@ -11,11 +11,46 @@ body {
 .navbar {
   padding: 1rem;
   margin-bottom: 3rem;
-  background-color: white;
+  background-color: #FEF9F8;
+  border-bottom: 12px solid #ef9273;
 }
 .navbar a.navbar-brand {
-  color: rgb(30, 32, 92);
+  color: #0d0d0d;
   font-weight: 900;
+}
+
+textarea {
+  padding: 1em;
+  background-color: #FEF9F8;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  outline: none;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.8;
+  transition: all 0.2s;
+}
+textarea:hover {
+  background-color: rgb(248, 248, 248);
+  cursor: pointer;
+}
+textarea:focus {
+  cursor: text;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+  text-decoration-line: underline;
+  text-decoration-color: #0d0d0d;
+}
+
+p {
+  line-height: 1.8;
 }
 
 #searchbar {
@@ -30,15 +65,21 @@ body {
   height: 50px;
   width: 50px;
   border-style: none;
-  padding: 10px;
+  padding: 10px 25px 10px 10px;
   font-size: 18px;
   letter-spacing: 2px;
   outline: none;
   border-radius: 25px;
   transition: all 0.5s ease-in-out;
-  background-color: rgb(30, 32, 92);
-  padding-right: 40px;
+  background-color: #0d0d0d;
   color: #262323;
+}
+@media (max-width: 600px) {
+  #searchbar .search-box .input-search {
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+  }
 }
 #searchbar .search-box .input-search::placeholder {
   color: #4e5053;
@@ -65,11 +106,17 @@ body {
   position: absolute;
   right: 0;
   color: #fff;
-  background-color: rgb(30, 32, 92);
+  background-color: #0d0d0d;
   pointer-events: painted;
 }
+@media (max-width: 600px) {
+  #searchbar .search-box .btn-search {
+    width: 30px;
+    height: 30px;
+  }
+}
 #searchbar .search-box .btn-search:hover {
-  box-shadow: 0 1px 2px 0 rgb(30, 32, 92);
+  box-shadow: 0 1px 2px 0 #0d0d0d;
   transition: box-shadow 0.5s;
 }
 #searchbar .search-box .btn-search:focus ~ .input-search {
@@ -81,21 +128,21 @@ body {
 }
 
 .categories {
-  background-color: rgb(251, 251, 251);
+  background-color: #FEF9FA;
 }
 .categories .cont {
   padding: 1rem;
 }
 .categories .cont h5 {
-  color: rgb(30, 32, 92);
+  color: #0d0d0d;
 }
 .categories .cont ul {
-  background-color: rgb(251, 251, 251);
+  background-color: #FEF9FA;
   list-style-type: none;
 }
 .categories .cont ul li {
-  color: rgb(30, 32, 92);
-  background-color: rgb(251, 251, 251);
+  color: #0d0d0d;
+  background-color: #FEF9FA;
   display: flex;
   justify-content: space-between;
 }
@@ -108,28 +155,43 @@ body {
 }
 .categories .cont ul li a {
   text-decoration: none;
-  color: rgb(30, 32, 92);
+  color: #0d0d0d;
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+.categories .cont ul li a:first-child:hover {
+  border-bottom: 2px solid #ef9273;
 }
 .categories .cont ul li a:hover {
-  background-color: rgb(243, 243, 243);
+  background-color: #FEF9F8;
+}
+.categories .cont ul li a button {
+  background-color: #ef9273;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 6px 12px;
+  letter-spacing: 2px;
 }
 @media (max-width: 600px) {
   .categories .cont ul li a button {
     width: 100%;
-    font-size: 0.8rem;
-    text-align: center;
-    padding: 2px 4px;
+    padding: 4px 8px;
   }
+}
+.categories .cont ul li a button:hover {
+  background-color: #f2a48a;
 }
 .categories .cont ul li .subscribe {
   border: none;
 }
 
 .card {
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
-  transition: box-shadow 0.5s;
+  transition: all 0.2s;
   width: 80%;
-  margin: 0 auto;
+  margin: 2rem auto;
+  border: none;
+  background-color: white;
 }
 @media (max-width: 900px) {
   .card {
@@ -137,10 +199,11 @@ body {
   }
 }
 .card:hover {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-bottom: 4px solid #ef9273;
 }
 .card .card-title {
-  color: rgb(30, 32, 92);
+  color: #0d0d0d;
+  margin-bottom: 30px;
 }
 .card .card-text {
   color: #4e5053;

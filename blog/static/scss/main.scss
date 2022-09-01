@@ -1,7 +1,8 @@
 //                                               -----  VARIABLES ------
-$primary-color: rgb(30, 32, 92);
-$secondary-color: rgb(243, 243, 243);
-$third-color: rgb(251, 251, 251);
+$primary-color: #0d0d0d;
+$secondary-color: #FEF9F8;
+$third-color: #FEF9FA;
+$_2nd_primary: #ef9273;
 $text-color: #4e5053;
 
 
@@ -19,12 +20,49 @@ body {
 .navbar {
     padding: 1rem;
     margin-bottom: 3rem;
-    background-color: white;
+    background-color: $secondary-color;
+    //border-top: 15px solid $_2nd_primary;
+    border-bottom: 12px solid $_2nd_primary;
 
     a.navbar-brand {
         color: $primary-color;
         font-weight: 900;
     }
+}
+
+textarea {
+    padding: 1em;
+    background-color: $secondary-color;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    outline: none;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.8;
+    transition: all 0.2s;
+
+    &:hover{
+        background-color: rgb(248,248,248);
+        cursor: pointer;
+    }
+    &:focus{
+        cursor: text;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    font-family: 'Montserrat', sans-serif;
+    text-decoration-line: underline;
+    text-decoration-color: $primary-color;
+}
+
+p{
+    line-height: 1.8;
 }
 
 //sidebar
@@ -41,15 +79,21 @@ body {
             height: 50px;
             width: 50px;
             border-style: none;
-            padding: 10px;
+            padding: 10px 25px 10px 10px;
             font-size: 18px;
             letter-spacing: 2px;
             outline: none;
             border-radius: 25px;
             transition: all .5s ease-in-out;
             background-color: $primary-color;
-            padding-right: 40px;
             color: #262323;
+
+            @media (max-width: 600px) {
+                width: 30px;
+                height: 30px;
+                padding: 10px;
+
+            }
 
             &::placeholder{
                 color:$text-color;
@@ -83,6 +127,12 @@ body {
                 color:#fff ;
                 background-color:$primary-color;
                 pointer-events: painted;
+
+                @media (max-width: 600px) {
+                    width: 30px;
+                    height: 30px;
+                    
+                }
 
                 &:hover{
                     box-shadow: 0 1px 2px 0 $primary-color ;
@@ -134,6 +184,14 @@ body {
                 a {
                     text-decoration: none;
                     color: $primary-color;
+                    border-radius: 2px;
+                    transition: all 0.2s;
+
+                    &:first-child{
+                        &:hover{
+                            border-bottom: 2px solid $_2nd_primary;
+                        }
+                    }
 
 
                     &:hover {
@@ -141,13 +199,24 @@ body {
                     }
 
                     button{
+
+                       background-color: $_2nd_primary;
+                        border-radius: 15px;
+                        font-size: 0.8rem;
+                        text-align: center;
+                        padding: 6px 12px;
+                        letter-spacing: 2px;
+
+
                         @media (max-width: 600px) {
                             &{
                                 width: 100%;
-                                font-size: 0.8rem;
-                                text-align: center;
-                                padding: 2px 4px;
+                                padding: 4px 8px;
                             }
+                        }
+
+                        &:hover{
+                            background-color: lighten($_2nd_primary, 5%);
                         }
                     }
 
@@ -166,10 +235,11 @@ body {
 
 .card {
 
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
-    transition: box-shadow 0.5s;
+    transition: all 0.2s;
     width: 80%;
-    margin: 0 auto;
+    margin: 2rem auto;
+    border: none;
+    background-color: lighten($third-color, 10%);
 
     @media (max-width: 900px){
 
@@ -181,13 +251,14 @@ body {
 
 
     &:hover {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-bottom: 4px solid $_2nd_primary;
     }
 
 
 
     .card-title {
         color: $primary-color;
+        margin-bottom: 30px;
     }
 
     .card-text {
