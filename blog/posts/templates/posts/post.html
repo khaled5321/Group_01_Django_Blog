@@ -95,7 +95,7 @@
             </div>
 
                   <!--  Comments Section    -->
-            <h3 class="num-comments">{{object.post_comments.count}} Comments</h3>
+            <h3 class="num-comments">{{object.post_comments.count|add:object.re_post.count}} Comments</h3>
             <div class="comment-thread">
                 <!-- Comment 1 start -->
                 {% if object.post_comments.all %}
