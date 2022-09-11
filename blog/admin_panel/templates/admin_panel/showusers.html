@@ -31,7 +31,7 @@
             <td class="text-center">
                 {% if not user.is_superuser%}
                 <a href="{% url 'block_user' user.id %}" class="btn btn-danger">
-                    {% if user.is_blocked %} UnBlock {%else%} Block {% endif %}
+                    {% if user.is_blocked %} Unlock {%else%} lock {% endif %}
                 </a>
                 {% endif %}
             </td>
