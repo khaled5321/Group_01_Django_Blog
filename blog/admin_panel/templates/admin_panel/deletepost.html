@@ -1,0 +1,18 @@
+
+
+
+    {%extends 'admin_panel/layouts/base.html'%} 
+    {% load static %}
+    
+    {% block content %}
+    <h1 class="m-5">Delete Post</h1>
+    <form class="m-5" method="POST" enctype="multipart/form-data">
+        {%csrf_token%}
+       {{ form }} 
+       <p>Are you sure you want to delete "{{ object }}"?</p>
+        <button type="submit" class="btn btn-primary"value="Confirm">delete</button>
+      </form>
+      
+     
+    
+    {% endblock %}
