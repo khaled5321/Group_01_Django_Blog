@@ -10,44 +10,6 @@
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
   
-  <div class="card-body">
-    <div class="">
-      <table class="table " id="">
-        <thead class=" text-primary">
-          <tr>
-            <th class="text-center">
-              word
-            </th>
-            <th class="text-center">
-              Delete
-            </th>
-            <th class="text-center">
-              Edit
-            </th>
-           
-          </tr>
-        </thead>
-        <tbody>
-          {% for bad in object_list %}
-          <tr>
-            <td class="text-center">
-             {{ bad.word }}
-            </td>
-            <td class="text-center">
-              {% comment %} {% url 'delete-badword' bad.id %} {% endcomment %}
-              <a href="#" class="btn btn-danger">delete</a>
-              
-            </td>
-            <td class="text-center">
-              {% comment %} {% url 'update-badword' bad.id %} {% endcomment %}
-              <a href="" class="btn btn-info">edit</a>
-            </td>
-            
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-  </div>
+ 
 
 {% endblock %}

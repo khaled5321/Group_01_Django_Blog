@@ -74,7 +74,7 @@ class Reply(models.Model):
 
 class BadWord(models.Model):
     word=models.CharField(max_length=120, null=True)
-
+     
     @classmethod
     def get_all_object(cls):
         return cls.objects.all()

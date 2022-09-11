@@ -1,0 +1,149 @@
+{%extends 'admin_panel/layouts/base.html'%} 
+{% load static %}
+
+{% block content %}
+<h1 class="m-5"> Category</h1>
+
+  <div class="card-body">
+    <div class="">
+      <table class="table tablesorter " id="">
+        <thead class=" text-primary">
+          <tr>
+            <th class="text-center">
+              Name
+            </th>
+          
+            <th class="text-center">
+              Delete
+            </th>
+            <th class="text-center">
+              Edit
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for cat in  allcategories %}
+          
+          <tr>
+           
+            <td class="text-center">
+             {{ cat.name }}
+            </td>
+            <td class="text-center">
+            
+              <a href="{% url 'delete-category' cat.id %}" class="btn btn-danger">delete</a>
+              
+            </td>
+            <td class="text-center">
+             
+              <a href="{% url 'update-category' cat.id %}" class="btn btn-info">edit</a>
+            </td>
+            
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <h1 class="m-5"> Post</h1>
+  <div class="card-body">
+    <div class="">
+      <table class="table tablesorter " id="">
+        <thead class=" text-primary">
+          <tr>
+            <th>
+              title
+            </th>
+          
+            <th >
+              created_at
+            </th>
+            <th >
+              category_id
+            </th>
+            <th >
+              user
+            </th>
+            <th >
+              Delete
+            </th>
+            <th >
+              Edit
+            </th>
+          </tr>
+          
+        </thead>
+        <tbody>
+          {% for post in  allposts %}
+          <tr>
+            <td>
+              {{ post.title }}
+            </td>
+            <td>
+              {{ post.created_at }}
+            </td>
+            <td>
+              {{ post.category_id }}
+            </td>
+            <td >
+              {{ post.user }}
+            </td>
+            <td >
+             
+              <a href="{% url 'delete-post' post.id %}" class="btn btn-danger">delete</a>
+              
+            </td>
+            <td >
+              
+              <a href="{% url 'update-post' post.id %}" class="btn btn-info">edit</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <h1 class="m-5"> Forbidden words</h1>
+  
+  <div class="card-body">
+    <div class="">
+      <table class="table tablesorter " id="">
+        <thead class=" text-primary">
+          <tr>
+            <th class="text-center">
+              Word
+            </th>
+          
+            <th class="text-center">
+              Delete
+            </th>
+            <th class="text-center">
+              Edit
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for bad in  allbadwords %}
+          
+          <tr>
+           
+            <td class="text-center">
+             {{ bad.word }}
+            </td>
+            <td class="text-center">
+            
+              <a href="{% url 'delete-category' bad.id %}" class="btn btn-danger">delete</a>
+              
+            </td>
+            <td class="text-center">
+             
+              <a href="{% url 'delete-badword' bad.id %}" class="btn btn-info">edit</a>
+            </td>
+            
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}
