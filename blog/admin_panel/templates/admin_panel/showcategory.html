@@ -1,0 +1,45 @@
+{%extends 'admin_panel/layouts/base.html'%}
+{% load static %}
+
+{% block content %}
+<div class="">
+    <h1 class="m-5" style="display: inline;"> Category</h1>
+    <a href="{% url 'create-category' %}" class="btn btn-primary">Create Categoy</a>
+</div>
+
+<div class="card-body">
+    <div class="">
+        <table class="table tablesorter " id="">
+            <thead class=" text-primary">
+                <tr>
+                    <th class="text-center">
+                        Name
+                    </th>
+
+                    <th class="text-center">
+                        Delete
+                    </th>
+                    <th class="text-center">
+                        Edit
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cat in object_list %}
+                <tr>
+                    <td class="text-center">
+                        {{ cat.name }}
+                    </td>
+                    <td class="text-center">
+                        <a href="{% url 'delete-category' cat.id %}" class="btn btn-danger">delete</a>
+                    </td>
+                    <td class="text-center">
+                        <a href="{% url 'update-category' cat.id %}" class="btn btn-info">edit</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,54 +1,43 @@
-
-
-    <div class="sidebar">
-      <div class="sidebar-wrapper">
-        <div class="logo">
-          <a target="_blank" rel="sponsored noopener noreferrer" 
-             href="https://appseed.us/admin-dashboards/django-dashboard-black" class="simple-text logo-mini">
-            PI
-          </a>
-          <a target="_blank" rel="sponsored noopener noreferrer" 
-             href="https://appseed.us/admin-dashboards/django-dashboard-black" class="simple-text logo-normal">
-            Django Black
-          </a>
-         
-        </div>
-
-        <ul class="nav">
-        
-
-         
-          <li class="">
-            <a href="{% url 'create-category' %}">
-              
-              <p>Category</p>
-            </a>
-          </li>
-          <li class="">
-            <a href="{% url 'create-post' %}">
-             
-              <p>Post</p>
-            </a>
-          </li>
-          <li class="">
-            <a href="{% url 'create-badword' %}">
-              
-              <p>Bad Word</p>
-            </a>
-          </li>
-          
-          <li class="">
-       
-            <a href="{% url 'logout' %}" >
-              <i class="tim-icons icon-button-power"></i>
-              <p>Logout</p>
-            </a>
-          </li>
-          
-           
-          
-                    
-        </ul>
-        
-      </div>
+<div class="sidebar">
+  <div class="sidebar-wrapper">
+    <div class="logo">
+      <h4 style="text-align:center;">Adminstarion Page</h4>
+      
     </div>
+    
+    <ul class="nav">
+      <li class="">
+        <a  href="{% url 'home' %}">
+          <h5>View Blog</h5>
+        </a>
+      </li>
+    
+      <li class="">
+        <a href="{% url 'show-post' %}">
+          <h6>Users</h6>
+        </a>
+      </li>
+      <li class="">
+        <a href="{% url 'show-category' %}">
+          <h6>Categories</h6>
+        </a>
+      </li>
+      <li class="">
+        <a href="{% url 'show-post' %}">
+          <h6>Posts</h6>
+        </a>
+      </li>
+      <li class="">
+        <a href="{% url 'show-badword' %}">
+          <h6>Forbidden Words</h6>
+        </a>
+      </li>
+
+      <li class="">
+        <a href="{% url 'logout' %}">
+          <i class="tim-icons icon-button-power">Logout</i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

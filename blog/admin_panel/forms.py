@@ -1,4 +1,3 @@
-
 from django import forms
 from posts.models import Post,Comment,Reply,BadWord
 from categories.models import Category
@@ -9,8 +8,8 @@ class PostsModelForm (forms.ModelForm):
     class Meta:
         model=Post
         fields="__all__"
-        
-
+        exclude= ['likes', 'dislikes']
+            
 
 class CategoryModelForm (forms.ModelForm):
     class Meta:
@@ -28,11 +27,13 @@ class CommentsModelForm(forms.ModelForm):
     class Meta:
         model=Comment
         fields="__all__"
-        
+
+
 class ReplyModelForm(forms.ModelForm):
     class Meta:
         model=Reply
         fields="__all__"
+     
         
 class BadwordModelForm(forms.ModelForm):
     class Meta:

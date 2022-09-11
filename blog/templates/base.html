@@ -50,7 +50,7 @@
                         {% endif %}
                         {% if user.is_superuser %}
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin/">MANAGE BLOG</a>
+                            <a class="nav-link" href="{% url 'dashIndex' %}">MANAGE BLOG</a>
                         </li>
                         {% endif %}
                         <li class="nav-item">

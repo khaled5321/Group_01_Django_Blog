@@ -4,7 +4,6 @@ from django.contrib.auth import login, authenticate, logout
 from django.core.validators import validate_email
 from django.contrib.auth.validators import ASCIIUsernameValidator
 from django.core.exceptions import ValidationError
-from categories.models import Category
 from .forms import LoginForm
 from .models import User
 

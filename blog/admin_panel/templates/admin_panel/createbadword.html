@@ -4,12 +4,9 @@
 {% block content %}
 <h1 class="m-5">Add new BadWord</h1>
 <form class="m-5" method="POST" enctype="multipart/form-data">
-    {%csrf_token%}
-   {{ form }} 
-    
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-  
- 
+  {%csrf_token%}
+  {{ form }}   
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 
 {% endblock %}

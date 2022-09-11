@@ -26,7 +26,7 @@ class Detailposts(DetailView):
 
         if not request.user.is_authenticated:
             messages.error(request, 'You have to login first!')
-            return redirect('postinfo',self.object.id)
+            return redirect('login')
 
         option=self.request.POST.get('option')
         if option == 'like':

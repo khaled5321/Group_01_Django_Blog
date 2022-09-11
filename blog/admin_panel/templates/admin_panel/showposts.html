@@ -1,0 +1,65 @@
+{%extends 'admin_panel/layouts/base.html'%}
+{% load static %}
+{% block content %}
+<div class="">
+    <h1 class="m-5" style="display: inline;"> Posts</h1>
+    <a href="{% url 'create-post' %}" class="btn btn-primary">Create Post</a>
+</div>
+<div class="card-body">
+    <div class="">
+        <table class="table tablesorter " id="">
+            <thead class=" text-primary">
+                <tr>
+                    <th>
+                        title
+                    </th>
+
+                    <th>
+                        created_at
+                    </th>
+                    <th>
+                        category
+                    </th>
+                    <th>
+                        user
+                    </th>
+                    <th>
+                        Delete
+                    </th>
+                    <th>
+                        Edit
+                    </th>
+                </tr>
+
+            </thead>
+            <tbody>
+                {% for post in object_list %}
+                <tr>
+                    <td>
+                        {{ post.title }}
+                    </td>
+                    <td>
+                        {{ post.created_at }}
+                    </td>
+                    <td>
+                        {{ post.category_id }}
+                    </td>
+                    <td>
+                        {{ post.user }}
+                    </td>
+                    <td>
+
+                        <a href="{% url 'delete-post' post.id %}" class="btn btn-danger">delete</a>
+
+                    </td>
+                    <td>
+
+                        <a href="{% url 'update-post' post.id %}" class="btn btn-info">edit</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
