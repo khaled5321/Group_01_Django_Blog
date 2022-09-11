@@ -5,6 +5,6 @@ urlpatterns = [
     path("register", register, name="register"),
     path("login", login_view, name="login"),
     path("logout", logoutUser, name="logout"),
-    path("block", block_user, name="block_user"),
-    path("promote", promote_user, name="promote_user"),
+    path("block/<int:pk>", block_user, name="block_user"),
+    path("promote/<int:pk>", promote_user, name="promote_user"),
 ]

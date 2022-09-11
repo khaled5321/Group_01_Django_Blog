@@ -21,4 +21,7 @@ urlpatterns = [
      path("updateBadword/<int:pk>", views.Updatebadword.as_view(), name="update-badword"),
      path("deleteBadword/<int:pk>", views.Deletebadword.as_view(), name="delete-badword"),
      path("showBadword/", views.Showbadword.as_view(), name="show-badword"),
+
+     #users
+     path('users/', views.ShowUsers.as_view(),name="show-users")
 ]

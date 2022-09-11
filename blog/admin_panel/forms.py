@@ -23,18 +23,6 @@ class UserModelForm (forms.ModelForm):
         fields="__all__"
         
         
-class CommentsModelForm(forms.ModelForm):
-    class Meta:
-        model=Comment
-        fields="__all__"
-
-
-class ReplyModelForm(forms.ModelForm):
-    class Meta:
-        model=Reply
-        fields="__all__"
-     
-        
 class BadwordModelForm(forms.ModelForm):
     class Meta:
         model=BadWord

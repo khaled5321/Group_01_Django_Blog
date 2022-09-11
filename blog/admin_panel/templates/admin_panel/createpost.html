@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<h1 class="m-5">Add new Post</h1>
+<h1 class="m-5">{{title}}</h1>
 <form class="m-5" method="POST" enctype="multipart/form-data">
     {%csrf_token%}
    {{ form.as_p }} 

@@ -2,13 +2,8 @@
 {% load static %}
 
 {% block content %}
-<h1 class="m-5">Add new Category</h1>
-{{ categories }}
-{% for cat in categories %}
-{{ cat.name }}
-{% comment %} {% for cat in object_list %}
-{{cat.}}{% endcomment %}
-{% endfor %} 
+<h1 class="m-5">{{title}}</h1>
+
 <form class="m-5" method="POST" enctype="multipart/form-data">
     {%csrf_token%}
    {{ form }} 

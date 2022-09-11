@@ -1,47 +1,6 @@
 {%extends 'admin_panel/layouts/base.html'%} 
 {% load static %}
-
-  <h1 class="m-5"> Forbidden words</h1>
+{% block content %}
+  <h1 class="m-auto"> Welcome! {{ request.user.username }}</h1>
   
-  <div class="card-body">
-    <div class="">
-      <table class="table tablesorter " id="">
-        <thead class=" text-primary">
-          <tr>
-            <th class="text-center">
-              Word
-            </th>
-          
-            <th class="text-center">
-              Delete
-            </th>
-            <th class="text-center">
-              Edit
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-            {% for bad in  allbadwords %}
-          
-          <tr>
-           
-            <td class="text-center">
-             {{ bad.word }}
-            </td>
-            <td class="text-center">
-            
-              <a href="{% url 'delete-category' bad.id %}" class="btn btn-danger">delete</a>
-              
-            </td>
-            <td class="text-center">
-             
-              <a href="{% url 'delete-badword' bad.id %}" class="btn btn-info">edit</a>
-            </td>
-            
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-  </div>
 {% endblock %}

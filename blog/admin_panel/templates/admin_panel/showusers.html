@@ -2,8 +2,7 @@
 {% load static %}
 {% block content %}
   <div class="">
-    <h1 class="m-5" style="display: inline;"> Forbidden words</h1>
-    <a href="{% url 'create-badword' %}" class="btn btn-primary">Add Forbidden Word</a>
+    <h1 class="m-5" style="display: inline;"> Users</h1>
 </div>
   <div class="card-body">
     <div class="">
@@ -11,32 +10,35 @@
         <thead class=" text-primary">
           <tr>
             <th class="text-center">
-              Word
+              User
             </th>
           
             <th class="text-center">
-              Delete
+              Block
             </th>
             <th class="text-center">
-              Edit
+              Promote
             </th>
           </tr>
         </thead>
         <tbody>
-            {% for bad in  object_list %}
+            {% for user in  object_list %}
           
-          <tr>
+          <tr {% if user.is_superuser %} style="background-color: red;" {%endif%}>
             <td class="text-center">
-             {{ bad.word }}
+             {{ user.username }}
             </td>
             <td class="text-center">
-            
-              <a href="{% url 'delete-badword' bad.id %}" class="btn btn-danger">delete</a>
-              
+                {% if not user.is_superuser%}
+                <a href="{% url 'block_user' user.id %}" class="btn btn-danger">
+                    {% if user.is_blocked %} UnBlock {%else%} Block {% endif %}
+                </a>
+                {% endif %}
             </td>
             <td class="text-center">
-             
-              <a href="{% url 'update-badword' bad.id %}" class="btn btn-info">edit</a>
+                {% if not user.is_superuser%}
+                <a href="{% url 'promote_user' user.id %}" class="btn btn-info">Promote</a>
+                {% endif %}
             </td>
             
           </tr>

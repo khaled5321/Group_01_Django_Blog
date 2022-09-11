@@ -90,27 +90,23 @@ def logoutUser(request):
     return redirect('home')
 
 
-def block_user(request):
-    q=request.GET.get('q')
-    pk=request.GET.get('id')
+def block_user(request, pk):
     user=User.objects.get(pk=pk)
-    if q== 'block':
-        user.is_blocked=True
-        user.save()
-    elif q=="unblock":
+    if user.is_blocked:
         user.is_blocked=False
         user.save()
-    return redirect('/admin/user_interface/user/')
-
-
-def promote_user(request):
-    q=request.GET.get('q')
-    pk=request.GET.get('id')
-    user=User.objects.get(pk=pk)
-    if q== 'promote':
-        user.is_superuser=True
+    else:
+        user.is_blocked=True
         user.save()
-    elif q=="demote":
+    return redirect('show-users')
+
+
+def promote_user(request, pk):
+    user=User.objects.get(pk=pk)
+    if user.is_superuser:
         user.is_superuser=False
         user.save()
-    return redirect('/admin/user_interface/user/')
+    else:
+        user.is_superuser=True
+        user.save()
+    return redirect('show-users')
