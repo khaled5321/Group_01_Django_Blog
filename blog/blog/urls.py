@@ -8,4 +8,5 @@ urlpatterns = [
     path("", include("user_interface.urls")),
     path("", include("categories.urls")),
     path("", include("posts.urls")),
+    path("", include("admin_panel.urls")),
 ]+static(settings.MEDIA_URL, document_root =settings.MEDIA_ROOT)
