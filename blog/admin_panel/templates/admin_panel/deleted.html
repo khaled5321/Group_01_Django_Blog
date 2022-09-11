@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="alert alert-warning text-center" role="alert">
+    Post Had 10 dislikes! Post was deleted!
+</div>
+
+<script>
+    setTimeout(function(){
+         window.location.href = '/';
+      }, 2000);
+</script>
+{% endblock %}

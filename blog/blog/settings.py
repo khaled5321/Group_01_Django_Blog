@@ -31,6 +31,8 @@ INSTALLED_APPS = [
     "user_interface.apps.UserInterfaceConfig",
     "categories.apps.CategoriesConfig",
     "posts.apps.PostsConfig",
+    "admin_panel.apps.AdminPanelConfig",
+    
 ]
 
 MIDDLEWARE = [

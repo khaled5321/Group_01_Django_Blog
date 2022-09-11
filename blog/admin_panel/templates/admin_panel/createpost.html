@@ -1,0 +1,70 @@
+{%extends 'admin_panel/layouts/base.html'%} 
+{% load static %}
+
+{% block content %}
+<h1 class="m-5">Add new Post</h1>
+<form class="m-5" method="POST" enctype="multipart/form-data">
+    {%csrf_token%}
+   {{ form }} 
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <div class="card-body">
+    <div class="">
+      <table class="table tablesorter " id="">
+        <thead class=" text-primary">
+          <tr>
+            <th>
+              title
+            </th>
+          
+            <th >
+              created_at
+            </th>
+            <th >
+              category_id
+            </th>
+            <th >
+              user
+            </th>
+            <th >
+              Delete
+            </th>
+            <th >
+              Edit
+            </th>
+          </tr>
+          
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              Dakota Rice
+            </td>
+            <td>
+              Niger
+            </td>
+            <td>
+              Oud-Turnhout
+            </td>
+            <td >
+              $36,738
+            </td>
+            <td >
+              {% comment %} {% url 'delete-post' post.id %} {% endcomment %}
+              <a href="#" class="btn btn-danger">delete</a>
+              
+            </td>
+            <td >
+              {% comment %} {% url 'update-post' post.id %} {% endcomment %}
+              <a href="" class="btn btn-info">edit</a>
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+{% endblock %}

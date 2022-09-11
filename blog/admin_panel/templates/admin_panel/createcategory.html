@@ -1,0 +1,60 @@
+{%extends 'admin_panel/layouts/base.html'%} 
+{% load static %}
+
+{% block content %}
+<h1 class="m-5">Add new Category</h1>
+{{ categories }}
+{% for cat in categories %}
+{{ cat.name }}
+{% comment %} {% for cat in object_list %}
+{{cat.}}{% endcomment %}
+{% endfor %} 
+<form class="m-5" method="POST" enctype="multipart/form-data">
+    {%csrf_token%}
+   {{ form }} 
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <div class="card-body">
+    <div class="">
+      <table class="table tablesorter " id="">
+        <thead class=" text-primary">
+          <tr>
+            <th class="text-center">
+              Name
+            </th>
+          
+            <th class="text-center">
+              Delete
+            </th>
+            <th class="text-center">
+              Edit
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+           
+            <td class="text-center">
+             {{ cat.name }}
+            </td>
+            <td class="text-center">
+              {% comment %} {% url 'delete-category' cat.id %} {% endcomment %}
+              <a href="#" class="btn btn-danger">delete</a>
+              
+            </td>
+            <td class="text-center">
+              {% comment %} {% url 'update-category' cat.id %} {% endcomment %}
+              <a href="" class="btn btn-info">edit</a>
+            </td>
+            
+          </tr>
+         
+        </tbody>
+      </table>
+    </div>
+  </div>
+ 
+{% endblock %}
