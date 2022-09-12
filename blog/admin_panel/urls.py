@@ -25,5 +25,5 @@ urlpatterns = [
 
      #users
      path('users/', views.ShowUsers.as_view(),name="show-users"),
-     path("block/<int:pk>", block_user, name="block-user"),
+     path("block/<int:pk>", block_user, name="block_user"),
 ]
