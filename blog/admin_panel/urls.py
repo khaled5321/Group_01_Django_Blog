@@ -1,6 +1,6 @@
 from django.urls import path
 from . import  views
-from user_interface import block_user
+
 
 urlpatterns = [
      path("index", views.dashboardIndex, name="dashIndex"),
@@ -24,6 +24,6 @@ urlpatterns = [
      path("showBadword/", views.Showbadword.as_view(), name="show-badword"),
 
      #users
-     path('users/', views.ShowUsers.as_view(),name="show-users"),
-     path("block/<int:pk>", block_user, name="block_user"),
+     path('users/', views.ShowUsers.as_view(),name="show-users")
+    
 ]
