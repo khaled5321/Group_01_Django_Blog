@@ -1,6 +1,7 @@
 from django.urls import path
 from . import  views
 
+
 urlpatterns = [
      path("index", views.dashboardIndex, name="dashIndex"),
 
@@ -24,4 +25,5 @@ urlpatterns = [
 
      #users
      path('users/', views.ShowUsers.as_view(),name="show-users")
+    
 ]

@@ -12,7 +12,3 @@ class Category(models.Model):
     def get_specific_object(cls,id):
         return get_object_or_404(cls,pk=id)
     
-     
-    @classmethod
-    def get_all_object(cls):
-        return cls.objects.all()

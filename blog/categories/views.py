@@ -1,4 +1,4 @@
-from django.shortcuts import redirect
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.mail import EmailMessage
 from django.views.generic import ListView
@@ -34,7 +34,8 @@ class ShowCategory(ListView):
 def subscribe(request, pk):
     if not request.user.is_authenticated:
         messages.error(request, "You have to login to subscribe!")
-        return redirect('login')
+        # return redirect('home')
+        return redirect(request.META.get('HTTP_REFERER', '/'))
 
     cat=Category.objects.get(pk=pk)
     sub_cats= request.user.subscribed_categories.all()
