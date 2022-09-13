@@ -14,7 +14,7 @@
             </th>
           
             <th class="text-center">
-              Block
+              lock
             </th>
             <th class="text-center">
               Promote
@@ -30,14 +30,14 @@
             </td>
             <td class="text-center">
                 {% if not user.is_superuser%}
-                <a href="{% url 'block_user' user.id %}" class="btn btn-danger">
+                <a href="{% url 'block_user' user.pk %}" class="btn btn-danger">
                     {% if user.is_blocked %} Unlock {%else%} lock {% endif %}
                 </a>
                 {% endif %}
             </td>
             <td class="text-center">
-                {% if not user.is_superuser%}
-                <a href="{% url 'promote_user' user.id %}" class="btn btn-info">Promote</a>
+                {% if not user.is_superuser and not user.is_blocked %}
+                <a href="{% url 'promote_user' user.pk %}" class="btn btn-info">Promote</a>
                 {% endif %}
             </td>
             
