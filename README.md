@@ -1,56 +1,60 @@
-<h1>ITI Summer Training Python Group-1 Django Blog Project</h1>
+# ITI Summer Training Python Group-1 Django Blog Project
 
-<h2>Getting started</h2>
-<ol>
-<li>Create virtual environment
+## Preview
+
+![preview](https://github.com/khaled5321/Group_01_Django_Blog/assets/20709263/9e9c8a0c-b115-4000-a5fd-6277b577b1cf)
+
+
+## Getting started
+
+1. Create virtual environment
 
 ```shell
 python -m venv venv
 ```
-</li>
-<li>Clone repo on your machine
+
+2. Clone repo on your machine
 
 ```shell
 git clone https://github.com/khaled5321/Group_01_Django_Blog.git
 ```
-</li>
-<li>go to blog folder
+
+3. go to blog folder
 
 ```shell
 cd blog
 ```
-</li>
-<li>Install requirements
+
+4. Install requirements
 
 ```shell
 pip install -r requirements.txt
 ```
-</li>
-<li>migrate to database
+
+5. migrate to database
 
 ```shell
 python manage.py migrate
 ```
-</li>
-<li>Run server
+
+6. Run server
 
 ```shell
 python manage.py runserver
 ```
-</li>
-<li>
-Open http://127.0.0.1:8000/ on your browser
-</li>
-</ol>
-<hr>
-<h3>Live Demo: https://blog-h7ai.onrender.com</h3>
-<hr>
-<h2><u>Team members:</u></h2>
-<ul>
-<li>Dalia Medhat Mohamed Youssef Atia</li>
-<li>Emad Mahmoud Mustafa AbdelAal</li>
-<li>Khaled Emad Roshdy Haggag</li>
-<li>Mahmoud Abd-Elfattah Hamdy Batran</li>
-<li>Mariam Khaled Hassan Mohammed Ahmed Eissa</li>
-</ul>
 
+7. Open http://127.0.0.1:8000/ on your browser
+
+---
+
+### Live Demo: https://blog-h7ai.onrender.com
+
+---
+
+<h2><u>Team members:</u></h2>
+
+- Dalia Medhat Mohamed Youssef Atia
+- Emad Mahmoud Mustafa AbdelAal
+- Khaled Emad Roshdy Haggag
+- Mahmoud Abd-Elfattah Hamdy Batran
+- Mariam Khaled Hassan Mohammed Ahmed Eissa
