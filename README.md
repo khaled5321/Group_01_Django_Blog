@@ -43,7 +43,7 @@ Open http://127.0.0.1:8000/ on your browser
 </li>
 </ol>
 <hr>
-<h3>Live Demo: https://djangoblog.up.railway.app/</h3>
+<h3>Live Demo: https://blog-h7ai.onrender.com</h3>
 <hr>
 <h2><u>Team members:</u></h2>
 <ul>
